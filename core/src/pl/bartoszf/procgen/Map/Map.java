@@ -37,9 +37,10 @@ public class Map {
     public void prepareMap() {
         fastNoise = new FastNoise();
         fastNoise.SetSeed((int) (Math.random() * Integer.MAX_VALUE));
-        fastNoise.SetNoiseType(FastNoise.NoiseType.Simplex);
+        fastNoise.SetNoiseType(FastNoise.NoiseType.PerlinFractal);
         fastNoise.SetFractalOctaves(16);
-        fastNoise.SetFrequency(0.005f);
+        fastNoise.SetFractalLacunarity(0.5f);
+        fastNoise.SetFrequency(0.008f);
 
         noiseArray = new double[size][size];
         tiles = new HashMap<Vector2, Tile>();
