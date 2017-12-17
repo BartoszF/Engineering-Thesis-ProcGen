@@ -9,12 +9,16 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import pl.bartoszf.procgen.GameState;
+import pl.bartoszf.procgen.Tiles.Grass;
+import pl.bartoszf.procgen.Tiles.Rock;
+import pl.bartoszf.procgen.Tiles.Sand;
 import pl.bartoszf.procgen.Utils.FastNoise;
 
 import java.util.HashMap;
+import java.util.Map;
 
-public class Map {
-    public final float delay = 0.00005f;
+public class GameMap {
+    public final float delay = 0.00001f;
     public final int tileSize = 32;
     HashMap<Vector2, Tile> tiles;
     int size;
@@ -24,12 +28,12 @@ public class Map {
     Texture noiseTex;
     FastNoise fastNoise;
 
-    public Map() {
+    public GameMap() {
         this.size = 1024;
         prepareMap();
     }
 
-    public Map(int size) {
+    public GameMap(int size) {
         this.size = size;
         prepareMap();
     }
@@ -39,8 +43,8 @@ public class Map {
         fastNoise.SetSeed((int) (Math.random() * Integer.MAX_VALUE));
         fastNoise.SetNoiseType(FastNoise.NoiseType.PerlinFractal);
         fastNoise.SetFractalOctaves(16);
-        fastNoise.SetFractalLacunarity(0.5f);
-        fastNoise.SetFrequency(0.008f);
+        fastNoise.SetFractalLacunarity(0.6f);
+        fastNoise.SetFrequency(0.009f);
 
         noiseArray = new double[size][size];
         tiles = new HashMap<Vector2, Tile>();
@@ -54,19 +58,33 @@ public class Map {
 
     public void render(SpriteBatch sb, OrthographicCamera cam) {
         if (!GameState.INSTANCE.mapNoiseDone || !GameState.INSTANCE.mapTilesDone) {
-            timeBuffer += Gdx.graphics.getDeltaTime();
-            if (timeBuffer >= delay) {
-                int times = (int) (timeBuffer / delay);
-                timeBuffer = 0;
-                if (!GameState.INSTANCE.mapNoiseDone) {
-                    for (int i = 0; i < times; i++)
-                        nextNoiseCell();
-                } else if (!GameState.INSTANCE.mapTilesDone) {
-                    for (int i = 0; i < times; i++)
-                        nextMapTile();
+            notDoneDraw(sb, cam);
+        } else {
+            for (Map.Entry<Vector2, Tile> entry : tiles.entrySet()) {
+                Tile tile = entry.getValue();
+                if (tile == null) continue;
+                if (cam.frustum.sphereInFrustum(new Vector3(tile.getPosition().x, tile.getPosition().y, 0), tileSize)) {
+                    sb.draw(tile.getTexture(), tile.position.x, tile.position.y);
                 }
             }
         }
+
+    }
+
+    private void notDoneDraw(SpriteBatch sb, OrthographicCamera cam) {
+        timeBuffer += Gdx.graphics.getDeltaTime();
+        if (timeBuffer >= delay) {
+            int times = (int) (timeBuffer / delay);
+            timeBuffer = 0;
+            if (!GameState.INSTANCE.mapNoiseDone) {
+                for (int i = 0; i < times; i++)
+                    nextNoiseCell();
+            } else if (!GameState.INSTANCE.mapTilesDone) {
+                for (int i = 0; i < times; i++)
+                    nextMapTile();
+            }
+        }
+
         if (!GameState.INSTANCE.mapNoiseDone) {
             Color oldColor = sb.getColor();
             for (int y = 0; y <= lastY; y++) {
@@ -81,22 +99,60 @@ public class Map {
                 }
             }
             sb.setColor(oldColor);
+        } else if (!GameState.INSTANCE.mapTilesDone) {
+            for (Map.Entry<Vector2, Tile> entry : tiles.entrySet()) {
+                Tile tile = entry.getValue();
+                if (tile == null) continue;
+                if (cam.frustum.sphereInFrustum(new Vector3(tile.getPosition().x, tile.getPosition().y, 0), tileSize)) {
+                    sb.draw(tile.getTexture(), tile.position.x, tile.position.y);
+                }
+            }
         }
     }
 
     private void nextMapTile() {
+        if (GameState.INSTANCE.mapTilesDone) {
+            lastX = 0;
+            lastY = 0;
+            return;
+        }
+        if (lastX >= size - 1 && lastY >= size - 1) {
+            GameState.INSTANCE.mapTilesDone = true;
+        }
 
+        double val = noiseArray[lastY][lastX];
+        Vector2 position = new Vector2(lastX * tileSize, lastY * tileSize);
+
+        if (val < 0.2) {
+
+        } else if (val <= 0.21) {
+            tiles.put(position, new Sand(position, tileSize));
+        } else if (val <= 0.6) {
+            tiles.put(position, new Grass(position, tileSize));
+        } else if (val <= 1) {
+            tiles.put(position, new Rock(position, tileSize));
+        }
+
+        lastX++;
+        if (lastX >= size) {
+            lastX = 0;
+            lastY++;
+        }
     }
 
     private void nextNoiseCell() {
 
-        if (GameState.INSTANCE.mapNoiseDone)
+        if (GameState.INSTANCE.mapNoiseDone) {
+            lastX = 0;
+            lastY = 0;
             return;
+        }
         if (lastX >= size - 1 && lastY >= size - 1) {
             GameState.INSTANCE.mapNoiseDone = true;
         }
 
         double noise = ((fastNoise.GetNoise(lastX, lastY) + 1) / 2) * getGradient(lastX, lastY);
+        System.out.println(noise);
         noiseArray[lastY][lastX] = noise;
 
         lastX++;
@@ -104,8 +160,6 @@ public class Map {
             lastX = 0;
             lastY++;
         }
-
-
     }
 
     private float getGradient(int x, int y) {
