@@ -44,7 +44,8 @@ public class GameMap {
         fastNoise.SetNoiseType(FastNoise.NoiseType.PerlinFractal);
         fastNoise.SetFractalOctaves(16);
         fastNoise.SetFractalLacunarity(0.6f);
-        fastNoise.SetFrequency(0.009f);
+        fastNoise.SetFractalGain(0.0033f);
+        fastNoise.SetFrequency(0.01f);
 
         noiseArray = new double[size][size];
         tiles = new HashMap<Vector2, Tile>();
@@ -123,11 +124,11 @@ public class GameMap {
         double val = noiseArray[lastY][lastX];
         Vector2 position = new Vector2(lastX * tileSize, lastY * tileSize);
 
-        if (val < 0.2) {
+        if (val < 0.15) {
 
-        } else if (val <= 0.21) {
+        } else if (val <= 0.16) {
             tiles.put(position, new Sand(position, tileSize));
-        } else if (val <= 0.6) {
+        } else if (val <= 0.5) {
             tiles.put(position, new Grass(position, tileSize));
         } else if (val <= 1) {
             tiles.put(position, new Rock(position, tileSize));
@@ -151,8 +152,11 @@ public class GameMap {
             GameState.INSTANCE.mapNoiseDone = true;
         }
 
-        double noise = ((fastNoise.GetNoise(lastX, lastY) + 1) / 2) * getGradient(lastX, lastY);
-        System.out.println(noise);
+        double temp = fastNoise.GetNoise(lastX, lastY);
+        float gradient = getGradient(lastX, lastY);
+        double noise = ((temp + 1) / 2) * gradient;
+        if (gradient != 0)
+            System.out.println(temp + " " + gradient + " " + noise);
         noiseArray[lastY][lastX] = noise;
 
         lastX++;
