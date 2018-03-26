@@ -155,8 +155,6 @@ public class GameMap {
         double temp = fastNoise.GetNoise(lastX, lastY);
         float gradient = getGradient(lastX, lastY);
         double noise = ((temp + 1) / 2) * gradient;
-        if (gradient != 0)
-            System.out.println(temp + " " + gradient + " " + noise);
         noiseArray[lastY][lastX] = noise;
 
         lastX++;
