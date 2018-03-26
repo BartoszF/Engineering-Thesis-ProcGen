@@ -4,6 +4,7 @@ public class GeneratorTile {
     private float height;
     private float temp;
     private float moisture;
+    private boolean isRiver = false;
 
     public GeneratorTile() {
     }
@@ -30,5 +31,13 @@ public class GeneratorTile {
 
     public void setMoisture(float moisture) {
         this.moisture = moisture;
+    }
+
+    public boolean isRiver() {
+        return isRiver;
+    }
+
+    public void setRiver(boolean river) {
+        isRiver = river;
     }
 }

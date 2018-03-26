@@ -4,7 +4,6 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.PixmapIO;
 import com.badlogic.gdx.math.Vector2;
 import pl.bartoszf.procgen.Utils.FastNoise;
-import pl.bartoszf.procgen.Utils.GeneratorUtils;
 
 import java.util.Map;
 
@@ -41,10 +40,9 @@ public class MoistureGenerator extends BaseLandGenerator {
             for (int x = 0; x < getSize(); x++) {
                 Vector2 pos = new Vector2(x, y);
                 double temp = fastNoise.GetNoise(x, y);
-                float gradient = GeneratorUtils.getGradient(x, y, getSize());
-                double noise = ((temp + 1) / 2) * gradient;
+                double noise = ((temp + 1) / 2);// * gradient;
 
-                getTiles().get(pos).setHeight((float) noise);
+                getTiles().get(pos).setMoisture((float) noise);
 
                 float color = (float) (noise);
                 drawOnMap(x, y, color);
