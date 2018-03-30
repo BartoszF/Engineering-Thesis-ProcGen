@@ -1,17 +1,17 @@
-package pl.bartoszf.procgen.Tiles;
+package pl.bartoszf.procgen.Map.Tiles;
 
 import com.badlogic.gdx.math.Vector2;
 import pl.bartoszf.procgen.Map.Tile;
 import pl.bartoszf.procgen.Utils.TextureManager;
 
-public class Grass extends Tile {
+public class Mountain extends Tile {
 
-    public Grass() {
+    public Mountain() {
         super();
     }
 
-    public Grass(Vector2 position, float size) {
-        super(TextureManager.INSTANCE.getTexture("grass"), position, size);
+    public Mountain(Vector2 position) {
+        super(TextureManager.INSTANCE.getTexture("stone"), position, 3.5f);
     }
 
     @Override

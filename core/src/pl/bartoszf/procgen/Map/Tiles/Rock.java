@@ -1,4 +1,4 @@
-package pl.bartoszf.procgen.Tiles;
+package pl.bartoszf.procgen.Map.Tiles;
 
 import com.badlogic.gdx.math.Vector2;
 import pl.bartoszf.procgen.Map.Tile;
@@ -10,8 +10,8 @@ public class Rock extends Tile {
         super();
     }
 
-    public Rock(Vector2 position, float size) {
-        super(TextureManager.INSTANCE.getTexture("stone"), position, size);
+    public Rock(Vector2 position) {
+        super(TextureManager.INSTANCE.getTexture("stone"), position, 2f);
     }
 
     @Override

@@ -6,10 +6,12 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import pl.bartoszf.procgen.Combiners.LandCombiner;
 import pl.bartoszf.procgen.Controllers.MapController;
 import pl.bartoszf.procgen.Generators.*;
 import pl.bartoszf.procgen.Map.GameMap;
 import pl.bartoszf.procgen.Utils.FastNoise;
+import pl.bartoszf.procgen.Utils.FrameRate;
 import pl.bartoszf.procgen.Utils.TextureManager;
 
 public class Game extends ApplicationAdapter {
@@ -22,6 +24,7 @@ public class Game extends ApplicationAdapter {
 	private float camSize = 1024 * 32 * 1.2f;
 
 	private FastNoise fastNoise;
+	private FrameRate fps;
 	
 	@Override
 	public void create () {
@@ -45,6 +48,8 @@ public class Game extends ApplicationAdapter {
 
 		controller = new MapController(cam);
 
+		fps = new FrameRate();
+
 		BaseLandGenerator generator = new HeightGenerator(1024);
 		generator.generate();
 		generator.saveImage("generators/heightMap.png");
@@ -58,10 +63,11 @@ public class Game extends ApplicationAdapter {
 		moistGen.saveImage("generators/moistGen.png");
 
 		BaseLandGenerator riverGen = new RiverGenerator(1024, generator.getTiles());
-		riverGen.generate();
-		riverGen.saveImage("generators/riverGen.png");
+		//riverGen.generate();
+		//riverGen.saveImage("generators/riverGen.png");
 
-
+		LandCombiner combiner = new LandCombiner(riverGen.getTiles(), 1024);
+		gameMap.setTiles(combiner.combineLand());
 	}
 
 	@Override
@@ -71,12 +77,14 @@ public class Game extends ApplicationAdapter {
 		Gdx.graphics.setTitle(delta.toString());
 		controller.update();
 		cam.update();
+		fps.update();
 		batch.setProjectionMatrix(cam.combined);
 
 		Gdx.gl.glClearColor(0, 0, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
 		gameMap.render(batch, cam);
+		fps.render();
 		batch.end();
 	}
 	

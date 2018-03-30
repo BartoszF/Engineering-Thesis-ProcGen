@@ -4,19 +4,22 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 
 public class Tile {
+
+    public static float TILE_SIZE = 32;
     Vector2 position;
     float size;
     Texture texture;
     float height;
-    float moisture;
+    float cost;
 
     public Tile() {
     }
 
-    public Tile(Texture texture, Vector2 position, float size) {
+    public Tile(Texture texture, Vector2 position, float cost) {
         this.texture = texture;
-        this.position = position;
-        this.size = size;
+        this.position = position.scl(TILE_SIZE);
+        this.size = TILE_SIZE;
+        this.cost = cost;
     }
 
     public Vector2 getPosition() {
@@ -51,12 +54,12 @@ public class Tile {
         this.height = height;
     }
 
-    public float getMoisture() {
-        return moisture;
+    public float getCost() {
+        return cost;
     }
 
-    public void setMoisture(float moisture) {
-        this.moisture = moisture;
+    public void setCost(float cost) {
+        this.cost = cost;
     }
 
     public Tile clone() {

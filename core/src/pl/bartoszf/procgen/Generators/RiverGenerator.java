@@ -9,6 +9,7 @@ import java.util.*;
 public class RiverGenerator extends BaseLandGenerator {
 
     float distanceBetweenPoints = 100f;
+    int triesCount = 100;
 
     /**
      * @param size
@@ -56,13 +57,21 @@ public class RiverGenerator extends BaseLandGenerator {
                 }
             }
         }
+        System.out.println("Highest points: ");
         for (Float f : highestPoints.keySet()) {
+            int maxTries = triesCount;
+            System.out.println(f);
             List<Vector2> trail = new ArrayList<>();
 
             Vector2 position = highestPoints.get(f);
             do {
-                if (!trail.contains(position))
+                if (!trail.contains(position)) {
                     trail.add(position);
+                    maxTries = triesCount;
+                } else {
+                    maxTries--;
+                }
+
                 getTiles().get(position).setRiver(true);
                 drawOnMap((int) position.x, (int) position.y, 1f);
                 Map<Vector2, GeneratorTile> neigh = getNeighbours(position.x, position.y);
@@ -85,12 +94,8 @@ public class RiverGenerator extends BaseLandGenerator {
                     selectedPos = selectedTiles.get(new Random().nextInt(selectedTiles.size()));
                     lower = selectedPos;
                 }
-
-
-                //TODO: Check multiple by moisture
-
                 position = lower;
-            } while (getTiles().get(position).getHeight() >= 0.2f);
+            } while (maxTries > 0 && getTiles().get(position).getHeight() >= 0.2f);
 
 
         }

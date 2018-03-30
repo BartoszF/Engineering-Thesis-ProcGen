@@ -7,6 +7,7 @@ import pl.bartoszf.procgen.Utils.FastNoise;
 import pl.bartoszf.procgen.Utils.GeneratorUtils;
 
 import java.util.Map;
+import java.util.Random;
 
 public class HeightGenerator extends BaseLandGenerator {
 
@@ -33,15 +34,20 @@ public class HeightGenerator extends BaseLandGenerator {
         fastNoise.SetSeed((int) (Math.random() * Integer.MAX_VALUE));
         fastNoise.SetNoiseType(FastNoise.NoiseType.PerlinFractal);
         fastNoise.SetFractalOctaves(16);
-        fastNoise.SetFractalLacunarity(0.6f);
-        fastNoise.SetFractalGain(0.0033f);
+        fastNoise.SetFractalLacunarity(0.8f);
+        fastNoise.SetFractalGain(0.0153f);
         fastNoise.SetFrequency(0.01f);
+
+        Random random = new Random();
+        float centerSize = getSize() * 0.5f;
+        float modifier = getSize() / 10;
+        Vector2 center = new Vector2(centerSize + random.nextFloat() * modifier, centerSize + random.nextFloat() * modifier);
 
         for (int y = 0; y < getSize(); y++) {
             for (int x = 0; x < getSize(); x++) {
                 Vector2 pos = new Vector2(x, y);
                 double temp = fastNoise.GetNoise(x, y);
-                float gradient = GeneratorUtils.getGradient(x, y, getSize());
+                float gradient = GeneratorUtils.getGradient(x, y, (int) center.x, (int) center.y, getSize());
                 double noise = ((temp + 1) / 2) * gradient;
 
                 getTiles().get(pos).setHeight((float) noise);

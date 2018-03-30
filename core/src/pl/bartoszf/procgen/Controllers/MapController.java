@@ -26,7 +26,12 @@ public class MapController extends Controller implements InputProcessor {
             getCamera().translate(scrollSpeed, 0, 0);
         }
 
-        //if(Gdx.input.)
+        if (Gdx.input.isKeyPressed(Input.Keys.W)) {
+            getCamera().translate(0, scrollSpeed, 0);
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.S)) {
+            getCamera().translate(0, -scrollSpeed, 0);
+        }
     }
 
     @Override
