@@ -7,10 +7,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import pl.bartoszf.procgen.Controllers.MapController;
-import pl.bartoszf.procgen.Generators.BaseLandGenerator;
-import pl.bartoszf.procgen.Generators.HeightGenerator;
-import pl.bartoszf.procgen.Generators.RiverGenerator;
-import pl.bartoszf.procgen.Generators.TempGenerator;
+import pl.bartoszf.procgen.Generators.*;
 import pl.bartoszf.procgen.Map.GameMap;
 import pl.bartoszf.procgen.Utils.FastNoise;
 import pl.bartoszf.procgen.Utils.TextureManager;
@@ -56,13 +53,15 @@ public class Game extends ApplicationAdapter {
 		tempGen.generate();
 		tempGen.saveImage("generators/tempMap.png");
 
-		BaseLandGenerator moistGen = new TempGenerator(1024);
+		BaseLandGenerator moistGen = new MoistureGenerator(1024);
 		moistGen.generate();
 		moistGen.saveImage("generators/moistGen.png");
 
 		BaseLandGenerator riverGen = new RiverGenerator(1024, generator.getTiles());
 		riverGen.generate();
 		riverGen.saveImage("generators/riverGen.png");
+
+
 	}
 
 	@Override

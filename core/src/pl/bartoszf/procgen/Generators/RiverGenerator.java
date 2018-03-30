@@ -8,7 +8,7 @@ import java.util.*;
 
 public class RiverGenerator extends BaseLandGenerator {
 
-    float distanceBetweenPoints = 10f;
+    float distanceBetweenPoints = 100f;
 
     /**
      * @param size
@@ -44,7 +44,6 @@ public class RiverGenerator extends BaseLandGenerator {
                 else {
                     if (highestPoints.firstKey() < height) {
                         boolean valid = true;
-                        //TODO: Check distance
                         for (Float f : highestPoints.keySet()) {
                             if (highestPoints.get(f).dst(pos) < distanceBetweenPoints)
                                 valid = false;
@@ -57,31 +56,41 @@ public class RiverGenerator extends BaseLandGenerator {
                 }
             }
         }
-
-        //TODO: Cellular automata them
-
         for (Float f : highestPoints.keySet()) {
             List<Vector2> trail = new ArrayList<>();
 
             Vector2 position = highestPoints.get(f);
             do {
-                trail.add(position);
+                if (!trail.contains(position))
+                    trail.add(position);
                 getTiles().get(position).setRiver(true);
                 drawOnMap((int) position.x, (int) position.y, 1f);
                 Map<Vector2, GeneratorTile> neigh = getNeighbours(position.x, position.y);
                 Vector2 lower = new Vector2(position);
-                float lowerHeight = getTiles().get(position).getHeight();
+                GeneratorTile selectedTile = getTiles().get(position);
+                float lowerHeight = selectedTile.getHeight();
+                float betterMoisture = selectedTile.getMoisture();
 
+                List<Vector2> selectedTiles = new ArrayList<>();
                 for (Map.Entry<Vector2, GeneratorTile> pair : neigh.entrySet()) {
-                    if (pair.getValue().getHeight() <= lowerHeight) {
-                        lower = pair.getKey();
-                        lowerHeight = pair.getValue().getHeight();
+                    float checkedHeight = selectedTile.getHeight();
+                    float checkedMoisture = selectedTile.getMoisture();
+                    if (checkedHeight <= lowerHeight && checkedMoisture >= betterMoisture) {
+                        selectedTiles.add(pair.getKey());
                     }
                 }
+
+                if (selectedTiles.size() > 0) {
+                    Vector2 selectedPos;
+                    selectedPos = selectedTiles.get(new Random().nextInt(selectedTiles.size()));
+                    lower = selectedPos;
+                }
+
+
                 //TODO: Check multiple by moisture
 
                 position = lower;
-            } while (!trail.contains(position) || getTiles().get(position).getHeight() <= 0.0f);
+            } while (getTiles().get(position).getHeight() >= 0.2f);
 
 
         }
