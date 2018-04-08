@@ -85,7 +85,7 @@ public class Game extends ApplicationAdapter {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
 		gameMap.render(batch, cam);
-		fps.render(cam);
+		fps.render(cam, gameMap);
 		batch.end();
 	}
 	

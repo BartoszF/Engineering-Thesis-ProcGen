@@ -18,7 +18,18 @@ public class LandCombinerConfig {
         }
 
         //Shore
-        if (tile.getHeight() >= 0.2f && tile.getHeight() <= 0.25f) {
+        if (tile.getHeight() >= 0.2f && tile.getHeight() <= 0.225f) {
+            //Cold - icy shore
+            if (tile.getTemp() < 0.3f) {
+                if (tile.getMoisture() < 0.3f) {
+                    return new Rock(pos);
+                }
+                if (tile.getMoisture() >= 0.3f) {
+                    //Ice
+                    return new Snow(pos);
+                }
+                return new Sand(pos);
+            }
             //Warm
             if (tile.getTemp() >= 0.3f) {
                 if (tile.getMoisture() < 0.5f) {
@@ -30,21 +41,12 @@ public class LandCombinerConfig {
                 }
                 return new Sand(pos);
             }
-            //Cold - icy shore
-            if (tile.getTemp() < 0.3f) {
-                if (tile.getMoisture() < 0.3f) {
-                    return new Rock(pos);
-                }
-                if (tile.getMoisture() >= 0.5f) {
-                    //Ice
-                }
-                return new Sand(pos);
-            }
+
             return new Sand(pos);
         }
 
         //Normal land
-        if (tile.getHeight() > 0.25f && tile.getHeight() <= 0.7f) {
+        if (tile.getHeight() > 0.225f && tile.getHeight() <= 0.7f) {
             if (tile.getTemp() < 0.3f) {
                 //Cold
                 if (tile.getMoisture() < 0.3f) {
@@ -56,14 +58,28 @@ public class LandCombinerConfig {
             }
             if (tile.getTemp() >= 0.3f && tile.getTemp() < 0.8f) {
                 //Normal temp
+                if (tile.getMoisture() < 0.4f) {
+                    //Dry Land
+                    return new DryGrass(pos);
+                }
+                if (tile.getMoisture() >= 0.4f && tile.getMoisture() <= 0.75f) {
+                    return new Grass(pos);
+                }
+                if (tile.getMoisture() > 0.75f) {
+                    return new Jungle(pos);
+                }
             }
             if (tile.getTemp() >= 0.8f) {
                 //Desert or jungle
-                if (tile.getMoisture() < 0.5f) {
+                if (tile.getMoisture() < 0.45f) {
                     return new Sand(pos);
                 }
-                if (tile.getMoisture() >= 0.5f) {
+                if (tile.getMoisture() >= 0.45f && tile.getMoisture() <= 0.5f) {
+                    return new DryGrass(pos);
+                }
+                if (tile.getMoisture() > 0.5f) {
                     //Jungle
+                    return new Jungle(pos);
                 }
             }
             return new Grass(pos);

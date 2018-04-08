@@ -46,6 +46,10 @@ public class GameMap {
         }
     }
 
+    public Tile getTileAt(int x, int y) {
+        return tiles[y][x];
+    }
+
     public Tile[][] getTiles() {
         return tiles;
     }
