@@ -5,11 +5,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import pl.bartoszf.procgen.Combiners.LandCombiner;
 import pl.bartoszf.procgen.Controllers.MapController;
 import pl.bartoszf.procgen.Generators.*;
 import pl.bartoszf.procgen.Map.GameMap;
+import pl.bartoszf.procgen.Map.Tile;
 import pl.bartoszf.procgen.Utils.FastNoise;
 import pl.bartoszf.procgen.Utils.FrameRate;
 import pl.bartoszf.procgen.Utils.TextureManager;
@@ -25,6 +27,7 @@ public class Game extends ApplicationAdapter {
 
 	private FastNoise fastNoise;
 	private FrameRate fps;
+	private BitmapFont font;
 	
 	@Override
 	public void create () {
@@ -36,12 +39,14 @@ public class Game extends ApplicationAdapter {
 
 		gameMap = new GameMap();
 
+		font = new BitmapFont();
+
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
 
 		cam = new OrthographicCamera(camSize, camSize * (h / w));
 
-		cam.position.set(cam.viewportWidth / 2f, cam.viewportHeight / 2f, 0);
+		cam.position.set(512 * Tile.TILE_SIZE, 512 * Tile.TILE_SIZE, 0);
 
 		cam.zoom = 0.8f;
 		cam.update();
@@ -73,8 +78,6 @@ public class Game extends ApplicationAdapter {
 	@Override
 	public void render () {
 
-		Float delta = new Float(Gdx.graphics.getDeltaTime());
-		Gdx.graphics.setTitle(delta.toString());
 		controller.update();
 		cam.update();
 		fps.update();
@@ -84,7 +87,7 @@ public class Game extends ApplicationAdapter {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
 		gameMap.render(batch, cam);
-		fps.render();
+		fps.render(cam);
 		batch.end();
 	}
 	

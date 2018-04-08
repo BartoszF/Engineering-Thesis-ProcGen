@@ -5,11 +5,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class GameMap {
-    Map<Vector2, Tile> tiles;
+    Tile[][] tiles;//Map<Vector2, Tile> tiles;
     int size;
 
     public GameMap() {
@@ -23,7 +20,8 @@ public class GameMap {
     }
 
     public void prepareMap() {
-        tiles = new HashMap<>();
+
+        tiles = new Tile[size][size];
     }
 
     public void render(SpriteBatch sb, OrthographicCamera cam) {
@@ -42,28 +40,31 @@ public class GameMap {
         Vector3 topRight = cam.frustum.planePoints[2];
         Vector3 bottomRight = cam.frustum.planePoints[1];
 
-        float minX = (float) Math.floor(bottomLeft.x);
-        float maxX = topRight.x;
-        float minY = (float) Math.floor(bottomLeft.y);
-        float maxY = topRight.y;
+        int minX = ((int) Math.floor(bottomLeft.x) / (int) Tile.TILE_SIZE) - 1;
+        int maxX = ((int) topRight.x / (int) Tile.TILE_SIZE) - 1;
+        int minY = (int) Math.floor(bottomLeft.y) / (int) Tile.TILE_SIZE;
+        int maxY = (int) topRight.y / (int) Tile.TILE_SIZE;
 
-        for (float y = minY; y <= maxY; y += 1.0f) {
-            for (float x = minX; x <= maxX; x += 1.0f) {
+        minX = minX < 0 ? 0 : minX;
+        minY = minY < 0 ? 0 : minY;
+        maxX = maxX >= size ? size - 1 : maxX;
+        maxY = maxY >= size ? size - 1 : maxY;
+
+        for (int y = minY; y <= maxY; y += 1) {
+            for (int x = minX; x <= maxX; x += 1) {
                 Vector2 pos = new Vector2(x, y);
-                Tile tile = tiles.get(pos);
+                Tile tile = tiles[y][x];
                 if (tile == null || tile.getTexture() == null) continue;
-                if (cam.frustum.sphereInFrustum(new Vector3(tile.getPosition().x, tile.getPosition().y, 0), Tile.TILE_SIZE)) {
                     sb.draw(tile.getTexture(), tile.position.x, tile.position.y);
-                }
             }
         }
     }
 
-    public Map<Vector2, Tile> getTiles() {
+    public Tile[][] getTiles() {
         return tiles;
     }
 
-    public void setTiles(Map<Vector2, Tile> tiles) {
+    public void setTiles(Tile[][] tiles) {
         this.tiles = tiles;
     }
 }
