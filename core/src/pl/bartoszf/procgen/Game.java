@@ -57,15 +57,15 @@ public class Game extends ApplicationAdapter {
 		generator.generate();
 		generator.saveImage("generators/heightMap.png");
 
-		BaseLandGenerator tempGen = new TempGenerator(1024);
+		BaseLandGenerator tempGen = new TempGenerator(1024, generator.getTiles());
 		tempGen.generate();
 		tempGen.saveImage("generators/tempMap.png");
 
-		BaseLandGenerator moistGen = new MoistureGenerator(1024);
+		BaseLandGenerator moistGen = new MoistureGenerator(1024, tempGen.getTiles());
 		moistGen.generate();
 		moistGen.saveImage("generators/moistGen.png");
 
-		BaseLandGenerator riverGen = new RiverGenerator(1024, generator.getTiles());
+		BaseLandGenerator riverGen = new RiverGenerator(1024, moistGen.getTiles());
 		//riverGen.generate();
 		//riverGen.saveImage("generators/riverGen.png");
 

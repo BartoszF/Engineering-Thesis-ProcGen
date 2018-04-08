@@ -1,8 +1,8 @@
 
 Tiles.png
 format: RGBA8888
-filter: Nearest,Nearest
-repeat: xy
+filter: MipMapLinearNearest,MipMapLinearNearest
+repeat: none
 grass
   rotate: false
   xy: 0, 0
@@ -12,14 +12,21 @@ grass
   index: -1
 sand
   rotate: false
-  xy: 33, 0
+  xy: 34, 0
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+snow
+  rotate: false
+  xy: 68, 0
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 stone
   rotate: false
-  xy: 66, 0
+  xy: 102, 0
   size: 32, 32
   orig: 32, 32
   offset: 0, 0

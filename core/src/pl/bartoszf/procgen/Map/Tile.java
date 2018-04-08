@@ -3,10 +3,11 @@ package pl.bartoszf.procgen.Map;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
+import pl.bartoszf.procgen.Utils.TextureManager;
 
 public class Tile {
 
-    public static float TILE_SIZE = 64;
+    public static float TILE_SIZE = 32;
     Vector2 position;
     float size;
     TextureAtlas texture;
@@ -54,7 +55,8 @@ public class Tile {
     }
 
     public void setTextureRegion(TextureRegion textureRegion) {
-        this.textureRegion = textureRegion;
+        TextureRegion temp = new TextureRegion(textureRegion);
+        this.textureRegion = TextureManager.fixBleeding(temp);
     }
 
     public float getHeight() {

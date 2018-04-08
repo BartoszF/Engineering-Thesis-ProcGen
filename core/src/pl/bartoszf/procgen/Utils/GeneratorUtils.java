@@ -8,7 +8,7 @@ public class GeneratorUtils {
         float delta = distance / max_width;
         float gradient = delta * delta;
 
-        return Math.max(0.0f, 1.25f - gradient);
+        return Math.max(0.0f, 1.15f - gradient);
     }
 
     public static float getDistance(int x, int y, int cx, int cy) {

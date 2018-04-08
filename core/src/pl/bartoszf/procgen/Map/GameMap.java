@@ -29,10 +29,10 @@ public class GameMap {
         Vector3 topRight = cam.frustum.planePoints[2];
         //Vector3 bottomRight = cam.frustum.planePoints[1];
 
-        int minX = ((int) Math.floor(bottomLeft.x) / (int) Tile.TILE_SIZE) - 2;
-        int maxX = ((int) topRight.x / (int) Tile.TILE_SIZE) + 2;
-        int minY = ((int) Math.floor(bottomLeft.y) / (int) Tile.TILE_SIZE) - 2;
-        int maxY = ((int) topRight.y / (int) Tile.TILE_SIZE) + 2;
+        int minX = ((int) Math.floor(bottomLeft.x) / (int) Tile.TILE_SIZE) - 6;
+        int maxX = ((int) topRight.x / (int) Tile.TILE_SIZE) + 6;
+        int minY = ((int) Math.floor(bottomLeft.y) / (int) Tile.TILE_SIZE) - 6;
+        int maxY = ((int) topRight.y / (int) Tile.TILE_SIZE) + 6;
 
         for (int y = minY; y <= maxY; y += 1) {
             for (int x = minX; x <= maxX; x += 1) {
