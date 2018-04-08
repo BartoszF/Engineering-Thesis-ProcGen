@@ -33,9 +33,7 @@ public class Game extends ApplicationAdapter {
 	public void create () {
 		batch = new SpriteBatch();
 
-		TextureManager.INSTANCE.setTexture("grass", "img/grass.png");
-		TextureManager.INSTANCE.setTexture("sand", "img/sand.png");
-		TextureManager.INSTANCE.setTexture("stone", "img/stone.png");
+		TextureManager.INSTANCE.setTexture("tiles", "img/Tiles.pack");
 
 		gameMap = new GameMap();
 

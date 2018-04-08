@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.MathUtils;
 
 public class MapController extends Controller implements InputProcessor {
 
-    private float scrollSpeed = 10f;
+    private float scrollSpeed = 100f;
     private float zoomAmount = 0.1f;
 
     public MapController(OrthographicCamera camera) {
@@ -19,18 +19,19 @@ public class MapController extends Controller implements InputProcessor {
 
     @Override
     public void update() {
+        float scrollAmount = scrollSpeed * getCamera().zoom;
         if (Gdx.input.isKeyPressed(Input.Keys.A)) {
-            getCamera().translate(-scrollSpeed, 0, 0);
+            getCamera().translate(-scrollAmount, 0, 0);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.D)) {
-            getCamera().translate(scrollSpeed, 0, 0);
+            getCamera().translate(scrollAmount, 0, 0);
         }
 
         if (Gdx.input.isKeyPressed(Input.Keys.W)) {
-            getCamera().translate(0, scrollSpeed, 0);
+            getCamera().translate(0, scrollAmount, 0);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.S)) {
-            getCamera().translate(0, -scrollSpeed, 0);
+            getCamera().translate(0, -scrollAmount, 0);
         }
     }
 
@@ -72,7 +73,7 @@ public class MapController extends Controller implements InputProcessor {
     @Override
     public boolean scrolled(int amount) {
         getCamera().zoom += amount * zoomAmount;
-        getCamera().zoom = MathUtils.clamp(getCamera().zoom, 0.01f, 10);
+        getCamera().zoom = MathUtils.clamp(getCamera().zoom, 0.05f, 10);
         return false;
     }
 }

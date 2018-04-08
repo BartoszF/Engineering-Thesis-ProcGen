@@ -45,7 +45,7 @@ public class FrameRate implements Disposable {
 
     public void render(OrthographicCamera camera2) {
         batch.begin();
-        font.draw(batch, (int) frameRate + " fps " + camera2.position.toString(), 3, Gdx.graphics.getHeight() - 3);
+        font.draw(batch, (int) frameRate + " fps " + camera2.position.toString() + " zoom : " + camera2.zoom, 3, Gdx.graphics.getHeight() - 3);
         batch.end();
     }
 

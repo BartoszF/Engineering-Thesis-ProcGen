@@ -11,7 +11,7 @@ public class Rock extends Tile {
     }
 
     public Rock(Vector2 position) {
-        super(TextureManager.INSTANCE.getTexture("stone"), position, 2f);
+        super(TextureManager.INSTANCE.getTexture("tiles"), "stone", position, 2f);
     }
 
     @Override

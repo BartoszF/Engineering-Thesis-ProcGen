@@ -1,22 +1,25 @@
 package pl.bartoszf.procgen.Map;
 
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
 public class Tile {
 
-    public static float TILE_SIZE = 32;
+    public static float TILE_SIZE = 64;
     Vector2 position;
     float size;
-    Texture texture;
+    TextureAtlas texture;
+    TextureRegion textureRegion;
     float height;
     float cost;
 
     public Tile() {
     }
 
-    public Tile(Texture texture, Vector2 position, float cost) {
+    public Tile(TextureAtlas texture, String tileName, Vector2 position, float cost) {
         this.texture = texture;
+        this.setTextureRegion(texture.findRegion(tileName));
         this.position = position.scl(TILE_SIZE);
         this.size = TILE_SIZE;
         this.cost = cost;
@@ -38,12 +41,20 @@ public class Tile {
         this.size = size;
     }
 
-    public Texture getTexture() {
+    public TextureAtlas getTexture() {
         return texture;
     }
 
-    public void setTexture(Texture texture) {
+    public void setTexture(TextureAtlas texture) {
         this.texture = texture;
+    }
+
+    public TextureRegion getTextureRegion() {
+        return textureRegion;
+    }
+
+    public void setTextureRegion(TextureRegion textureRegion) {
+        this.textureRegion = textureRegion;
     }
 
     public float getHeight() {

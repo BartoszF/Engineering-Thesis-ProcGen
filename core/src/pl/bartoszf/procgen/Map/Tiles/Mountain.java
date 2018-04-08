@@ -11,7 +11,7 @@ public class Mountain extends Tile {
     }
 
     public Mountain(Vector2 position) {
-        super(TextureManager.INSTANCE.getTexture("stone"), position, 3.5f);
+        super(TextureManager.INSTANCE.getTexture("tiles"), "stone", position, 3.5f);
     }
 
     @Override
