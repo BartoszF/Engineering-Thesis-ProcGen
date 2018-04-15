@@ -3,13 +3,14 @@ package pl.bartoszf.procgen.Map;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
+import pl.bartoszf.procgen.Game;
 
 public class GameMap {
     Tile[][] tiles;//Map<Vector2, Tile> tiles;
     int size;
 
     public GameMap() {
-        this.size = 1024;
+        this.size = Game.GAME_SIZE;
         //prepareMap();
     }
 
@@ -25,9 +26,7 @@ public class GameMap {
 
     public void render(SpriteBatch sb, OrthographicCamera cam) {
         Vector3 bottomLeft = cam.frustum.planePoints[0];
-        //Vector3 topLeft = cam.frustum.planePoints[3];
         Vector3 topRight = cam.frustum.planePoints[2];
-        //Vector3 bottomRight = cam.frustum.planePoints[1];
 
         int minX = ((int) Math.floor(bottomLeft.x) / (int) Tile.TILE_SIZE) - 6;
         int maxX = ((int) topRight.x / (int) Tile.TILE_SIZE) + 6;
@@ -48,6 +47,10 @@ public class GameMap {
 
     public Tile getTileAt(int x, int y) {
         return tiles[y][x];
+    }
+
+    public void setTileAt(int x, int y, Tile tile) {
+        this.tiles[y][x] = tile;
     }
 
     public Tile[][] getTiles() {

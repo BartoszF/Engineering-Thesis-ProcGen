@@ -44,8 +44,8 @@ public class MoistureGenerator extends BaseLandGenerator {
 
                 getTiles().get(pos).setMoisture((float) noise);
 
-                float color = (float) (noise);
-                drawOnMap(x, y, color);
+                //float color = (float) (noise);
+                //drawOnMap(x, y, color);
             }
         }
 

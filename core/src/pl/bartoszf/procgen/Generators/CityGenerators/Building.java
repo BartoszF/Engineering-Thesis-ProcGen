@@ -21,7 +21,9 @@ public class Building {
 
         rect.setWidth(w);
         rect.setHeight(h);
+    }
 
-
+    public Rectangle getRect() {
+        return rect;
     }
 }

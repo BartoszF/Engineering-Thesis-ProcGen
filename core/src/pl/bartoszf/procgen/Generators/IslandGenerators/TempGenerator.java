@@ -44,8 +44,8 @@ public class TempGenerator extends BaseLandGenerator {
 
                 getTiles().get(pos).setTemp((float) noise);
 
-                float color = (float) (noise);
-                drawOnMap(x, y, color);
+                //float color = (float) (noise);
+                //drawOnMap(x, y, color);
             }
         }
 

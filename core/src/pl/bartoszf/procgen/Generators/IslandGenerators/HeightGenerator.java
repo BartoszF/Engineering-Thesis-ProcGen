@@ -52,8 +52,8 @@ public class HeightGenerator extends BaseLandGenerator {
 
                 getTiles().get(pos).setHeight((float) noise);
 
-                float color = (float) (noise);
-                drawOnMap(x, y, color);
+                //float color = (float) (noise);
+                //drawOnMap(x, y, color);
             }
         }
 
