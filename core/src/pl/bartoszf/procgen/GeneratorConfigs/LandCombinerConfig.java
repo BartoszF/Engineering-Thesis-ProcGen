@@ -1,7 +1,7 @@
 package pl.bartoszf.procgen.GeneratorConfigs;
 
 import com.badlogic.gdx.math.Vector2;
-import pl.bartoszf.procgen.Generators.GeneratorTile;
+import pl.bartoszf.procgen.Generators.IslandGenerators.GeneratorTile;
 import pl.bartoszf.procgen.Map.Tile;
 import pl.bartoszf.procgen.Map.Tiles.*;
 

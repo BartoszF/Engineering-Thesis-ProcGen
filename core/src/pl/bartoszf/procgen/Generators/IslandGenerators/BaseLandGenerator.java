@@ -1,4 +1,4 @@
-package pl.bartoszf.procgen.Generators;
+package pl.bartoszf.procgen.Generators.IslandGenerators;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;

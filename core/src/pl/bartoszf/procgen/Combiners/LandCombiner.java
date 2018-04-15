@@ -2,7 +2,7 @@ package pl.bartoszf.procgen.Combiners;
 
 import com.badlogic.gdx.math.Vector2;
 import pl.bartoszf.procgen.GeneratorConfigs.LandCombinerConfig;
-import pl.bartoszf.procgen.Generators.GeneratorTile;
+import pl.bartoszf.procgen.Generators.IslandGenerators.GeneratorTile;
 import pl.bartoszf.procgen.Map.Tile;
 
 import java.util.Map;

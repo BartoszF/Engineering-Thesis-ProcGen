@@ -1,6 +1,10 @@
 package pl.bartoszf.procgen.Utils;
 
+import java.util.Random;
+
 public class GeneratorUtils {
+    public static Random random = new Random();
+
     public static float getGradient(int x, int y, int cx, int cy, int size) {
         float distance = getDistance(x, y, cx, cy);
 

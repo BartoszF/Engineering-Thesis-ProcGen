@@ -1,8 +1,9 @@
-package pl.bartoszf.procgen.Generators;
+package pl.bartoszf.procgen.Generators.IslandGenerators;
 
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.PixmapIO;
 import com.badlogic.gdx.math.Vector2;
+import pl.bartoszf.procgen.Utils.GeneratorUtils;
 
 import java.util.*;
 
@@ -91,7 +92,7 @@ public class RiverGenerator extends BaseLandGenerator {
 
                 if (selectedTiles.size() > 0) {
                     Vector2 selectedPos;
-                    selectedPos = selectedTiles.get(new Random().nextInt(selectedTiles.size()));
+                    selectedPos = selectedTiles.get(GeneratorUtils.random.nextInt(selectedTiles.size()));
                     lower = selectedPos;
                 }
                 position = lower;

@@ -1,4 +1,4 @@
-package pl.bartoszf.procgen.Generators;
+package pl.bartoszf.procgen.Generators.IslandGenerators;
 
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.PixmapIO;
@@ -7,14 +7,14 @@ import pl.bartoszf.procgen.Utils.FastNoise;
 
 import java.util.Map;
 
-public class MoistureGenerator extends BaseLandGenerator {
+public class TempGenerator extends BaseLandGenerator {
 
     FastNoise fastNoise;
 
     /**
      * @param size
      */
-    public MoistureGenerator(int size) {
+    public TempGenerator(int size) {
         super(size);
     }
 
@@ -22,7 +22,7 @@ public class MoistureGenerator extends BaseLandGenerator {
      * @param size
      * @param tiles
      */
-    public MoistureGenerator(int size, Map<Vector2, GeneratorTile> tiles) {
+    public TempGenerator(int size, Map<Vector2, GeneratorTile> tiles) {
         super(size, tiles);
     }
 
@@ -31,7 +31,7 @@ public class MoistureGenerator extends BaseLandGenerator {
         fastNoise = new FastNoise();
         fastNoise.SetSeed((int) (Math.random() * Integer.MAX_VALUE));
         fastNoise.SetNoiseType(FastNoise.NoiseType.PerlinFractal);
-        fastNoise.SetFractalOctaves(40);
+        fastNoise.SetFractalOctaves(20);
         fastNoise.SetFractalLacunarity(0.6f);
         fastNoise.SetFractalGain(0.0023f);
         fastNoise.SetFrequency(0.005f);
@@ -42,7 +42,7 @@ public class MoistureGenerator extends BaseLandGenerator {
                 double temp = fastNoise.GetNoise(x, y);
                 double noise = ((temp + 1) / 2);// * gradient;
 
-                getTiles().get(pos).setMoisture((float) noise);
+                getTiles().get(pos).setTemp((float) noise);
 
                 float color = (float) (noise);
                 drawOnMap(x, y, color);

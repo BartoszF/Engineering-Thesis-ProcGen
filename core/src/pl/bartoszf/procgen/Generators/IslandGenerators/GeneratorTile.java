@@ -1,4 +1,4 @@
-package pl.bartoszf.procgen.Generators;
+package pl.bartoszf.procgen.Generators.IslandGenerators;
 
 public class GeneratorTile {
     private float height;
