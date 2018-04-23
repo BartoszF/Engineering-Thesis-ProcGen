@@ -51,7 +51,7 @@ public class FrameRate implements Disposable {
         Tile centerTile = map.getTileAt(x, y);
         String tile = "null";
         if (centerTile != null) {
-            tile = centerTile.getClass().getName();
+            tile = centerTile.toString();//getClass().getName();
         }
         batch.begin();
         font.draw(batch, (int) frameRate + " fps " + camera2.position.toString() + " zoom : " + camera2.zoom + " Tile at center : " + tile, 3, Gdx.graphics.getHeight() - 3);

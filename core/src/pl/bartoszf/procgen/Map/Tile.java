@@ -7,7 +7,7 @@ import pl.bartoszf.procgen.Utils.TextureManager;
 
 public class Tile {
 
-    public static float TILE_SIZE = 32;
+    public static float TILE_SIZE = 128;
     Vector2 position;
     float size;
     TextureAtlas texture;

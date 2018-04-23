@@ -73,7 +73,7 @@ public class MapController extends Controller implements InputProcessor {
     @Override
     public boolean scrolled(int amount) {
         getCamera().zoom += amount * zoomAmount;
-        getCamera().zoom = MathUtils.clamp(getCamera().zoom, 0.05f, 1.5f);
+        getCamera().zoom = MathUtils.clamp(getCamera().zoom, 0.2f, 3f);
         return false;
     }
 }

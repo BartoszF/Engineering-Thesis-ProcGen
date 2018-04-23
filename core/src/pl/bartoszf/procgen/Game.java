@@ -7,11 +7,10 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import pl.bartoszf.procgen.Combiners.CityCombiner;
 import pl.bartoszf.procgen.Combiners.LandCombiner;
 import pl.bartoszf.procgen.Controllers.MapController;
-import pl.bartoszf.procgen.Generators.CityGenerators.CityGenerator;
-import pl.bartoszf.procgen.Generators.IslandGenerators.*;
+import pl.bartoszf.procgen.Generators.CityGenerators.CivilizationGenerator;
+import pl.bartoszf.procgen.Generators.IslandGenerators.IslandGenerator;
 import pl.bartoszf.procgen.Map.GameMap;
 import pl.bartoszf.procgen.Map.Tile;
 import pl.bartoszf.procgen.Utils.FastNoise;
@@ -56,29 +55,18 @@ public class Game extends ApplicationAdapter {
 
 		fps = new FrameRate();
 
-		BaseLandGenerator generator = new HeightGenerator(GAME_SIZE);
-		generator.generate();
-		//generator.saveImage("generators/heightMap.png");
+		IslandGenerator generator = new IslandGenerator();
 
-		BaseLandGenerator tempGen = new TempGenerator(GAME_SIZE, generator.getTiles());
-		tempGen.generate();
-		//tempGen.saveImage("generators/tempMap.png");
-
-		BaseLandGenerator moistGen = new MoistureGenerator(GAME_SIZE, tempGen.getTiles());
-		moistGen.generate();
-		//moistGen.saveImage("generators/moistGen.png");
-
-		BaseLandGenerator riverGen = new RiverGenerator(GAME_SIZE, moistGen.getTiles());
-		//riverGen.generate();
-		//riverGen.saveImage("generators/riverGen.png");
-
-		LandCombiner combiner = new LandCombiner(riverGen.getTiles(), GAME_SIZE);
+		LandCombiner combiner = new LandCombiner(generator.generateIsland(GAME_SIZE), GAME_SIZE);
 		gameMap.setTiles(combiner.combineLand());
 
-		CityGenerator tempCityGen = new CityGenerator(512, 512, 100, 100);
+		System.out.println("Generating civs");
+		/*CityGenerator tempCityGen = new CityGenerator(512, 512, 100, 100);
 		CityCombiner tempCityCombiner = new CityCombiner(gameMap);
 
-		tempCityCombiner.combine(tempCityGen.generate(3));
+		tempCityCombiner.combine(tempCityGen.generate(3));*/
+		CivilizationGenerator civGenerator = new CivilizationGenerator(gameMap);
+		civGenerator.generate();
 	}
 
 	@Override

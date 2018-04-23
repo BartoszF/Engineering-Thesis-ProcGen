@@ -1,60 +1,60 @@
 
 Tiles.png
 format: RGBA8888
-filter: Nearest,Nearest
-repeat: none
+filter: Linear,MipMapNearestLinear
+repeat: xy
 house_floor
   rotate: false
-  xy: 1, 69
+  xy: 0, 0
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 house_wall
   rotate: false
-  xy: 259, 69
+  xy: 256, 0
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 dry_land
   rotate: false
-  xy: 1, 35
+  xy: 512, 224
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 grass
   rotate: false
-  xy: 517, 293
+  xy: 512, 192
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 jungle
   rotate: false
-  xy: 1, 1
+  xy: 512, 160
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 sand
   rotate: false
-  xy: 35, 35
+  xy: 512, 128
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 snow
   rotate: false
-  xy: 517, 259
+  xy: 512, 96
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 stone
   rotate: false
-  xy: 551, 293
+  xy: 512, 64
   size: 32, 32
   orig: 32, 32
   offset: 0, 0

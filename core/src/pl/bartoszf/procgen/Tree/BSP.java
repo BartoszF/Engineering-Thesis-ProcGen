@@ -43,10 +43,20 @@ public class BSP<T> {
                 add(getLeaf());
             }};
         } else {
-            return new ArrayList<T>() {{
-                addAll(getLeftChild().getLeafs());
-                addAll(getRightChild().getLeafs());
-            }};
+            if (this.getLeftChild() == null) {
+                return new ArrayList<T>() {{
+                    addAll(getRightChild().getLeafs());
+                }};
+            } else if (this.getRightChild() == null) {
+                return new ArrayList<T>() {{
+                    addAll(getLeftChild().getLeafs());
+                }};
+            } else {
+                return new ArrayList<T>() {{
+                    addAll(getLeftChild().getLeafs());
+                    addAll(getRightChild().getLeafs());
+                }};
+            }
         }
     }
 
