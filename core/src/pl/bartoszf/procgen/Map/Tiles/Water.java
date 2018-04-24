@@ -4,18 +4,18 @@ import com.badlogic.gdx.math.Vector2;
 import pl.bartoszf.procgen.Map.Tile;
 import pl.bartoszf.procgen.Utils.TextureManager;
 
-public class HouseWall extends Tile {
+public class Water extends Tile {
 
-    public HouseWall() {
+    public Water() {
         super();
     }
 
-    public HouseWall(Vector2 position) {
-        super(TextureManager.INSTANCE.getTexture("tiles"), "house_wall", position, 100000f);
+    public Water(Vector2 position) {
+        super(TextureManager.INSTANCE.getTexture("tiles"), "water", position, 3000000f);
     }
 
     @Override
     public Tile clone() {
-        return new HouseWall();
+        return new Water();
     }
 }

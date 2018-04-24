@@ -11,22 +11,23 @@ import pl.bartoszf.procgen.Combiners.LandCombiner;
 import pl.bartoszf.procgen.Controllers.MapController;
 import pl.bartoszf.procgen.Generators.CityGenerators.CivilizationGenerator;
 import pl.bartoszf.procgen.Generators.IslandGenerators.IslandGenerator;
+import pl.bartoszf.procgen.Generators.PathGenerators.PathGenerator;
 import pl.bartoszf.procgen.Map.GameMap;
 import pl.bartoszf.procgen.Map.Tile;
+import pl.bartoszf.procgen.Pathfinding.PathFindingManager;
 import pl.bartoszf.procgen.Utils.FastNoise;
 import pl.bartoszf.procgen.Utils.FrameRate;
 import pl.bartoszf.procgen.Utils.TextureManager;
 
 public class Game extends ApplicationAdapter {
 	public static int GAME_SIZE = 2048;
+	public static PathFindingManager pathManager;
 	SpriteBatch batch;
 	Texture img;
 	private OrthographicCamera cam;
 	private GameMap gameMap;
 	private MapController controller;
-
 	private float camSize = 1024 * 32 * 1.2f;
-
 	private FastNoise fastNoise;
 	private FrameRate fps;
 	private BitmapFont font;
@@ -60,6 +61,8 @@ public class Game extends ApplicationAdapter {
 		LandCombiner combiner = new LandCombiner(generator.generateIsland(GAME_SIZE), GAME_SIZE);
 		gameMap.setTiles(combiner.combineLand());
 
+		pathManager = new PathFindingManager(gameMap);
+
 		System.out.println("Generating civs");
 		/*CityGenerator tempCityGen = new CityGenerator(512, 512, 100, 100);
 		CityCombiner tempCityCombiner = new CityCombiner(gameMap);
@@ -67,6 +70,11 @@ public class Game extends ApplicationAdapter {
 		tempCityCombiner.combine(tempCityGen.generate(3));*/
 		CivilizationGenerator civGenerator = new CivilizationGenerator(gameMap);
 		civGenerator.generate();
+
+		gameMap.populateConnections();
+
+		PathGenerator pathGen = new PathGenerator(gameMap);
+		pathGen.generate();
 	}
 
 	@Override

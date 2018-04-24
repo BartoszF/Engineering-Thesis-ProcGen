@@ -10,11 +10,11 @@ public class LandCombinerConfig {
     public static Tile getMapTile(GeneratorTile tile, Vector2 pos) {
         //Ocean
         if (tile.getHeight() < 0.2f) {
-            return null;
+            return new Water(pos);
         }
 
         if (tile.isRiver()) {
-            return null;
+            return new Water(pos);
         }
 
         //Shore

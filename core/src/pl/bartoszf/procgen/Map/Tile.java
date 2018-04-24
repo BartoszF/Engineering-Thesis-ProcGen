@@ -1,13 +1,16 @@
 package pl.bartoszf.procgen.Map;
 
+import com.badlogic.gdx.ai.pfa.Connection;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
 import pl.bartoszf.procgen.Utils.TextureManager;
 
 public class Tile {
 
     public static float TILE_SIZE = 128;
+    public Array<Connection<Tile>> connections;
     Vector2 position;
     float size;
     TextureAtlas texture;

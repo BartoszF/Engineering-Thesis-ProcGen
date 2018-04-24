@@ -3,11 +3,13 @@ package pl.bartoszf.procgen.Generators.CityGenerators;
 import com.badlogic.gdx.math.Rectangle;
 import pl.bartoszf.procgen.Combiners.CityCombiner;
 import pl.bartoszf.procgen.Game;
+import pl.bartoszf.procgen.Map.City;
 import pl.bartoszf.procgen.Map.GameMap;
 import pl.bartoszf.procgen.Map.Tile;
 import pl.bartoszf.procgen.Map.Tiles.HouseFloor;
 import pl.bartoszf.procgen.Map.Tiles.HouseWall;
 import pl.bartoszf.procgen.Map.Tiles.Mountain;
+import pl.bartoszf.procgen.Map.Tiles.Water;
 import pl.bartoszf.procgen.Utils.GeneratorUtils;
 
 import java.util.Random;
@@ -35,7 +37,10 @@ public class CivilizationGenerator {
             CityGenerator city = new CityGenerator((int) rect.getX(), (int) rect.getY(), (int) rect.getWidth(), (int) rect.getHeight());
             CityCombiner tempCityCombiner = new CityCombiner(gameMap);
 
-            tempCityCombiner.combine(city.generate(3 + (int) Math.ceil(size / 100.0f)));
+            CityResult result = city.generate(3 + (int) Math.ceil(size / 100.0f));
+
+            tempCityCombiner.combine(result.tiles);
+            gameMap.addCity(new City(result.center));
         }
     }
 
@@ -51,6 +56,7 @@ public class CivilizationGenerator {
                 if (tile instanceof Mountain) return false;
                 if (tile instanceof HouseFloor) return false;
                 if (tile instanceof HouseWall) return false;
+                if (tile instanceof Water) return false;
             }
         }
 

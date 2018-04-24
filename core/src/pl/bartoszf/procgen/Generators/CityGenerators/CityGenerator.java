@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 import pl.bartoszf.procgen.Map.Tile;
 import pl.bartoszf.procgen.Map.Tiles.HouseFloor;
 import pl.bartoszf.procgen.Map.Tiles.HouseWall;
-import pl.bartoszf.procgen.Map.Tiles.Mountain;
+import pl.bartoszf.procgen.Map.Tiles.Path;
 import pl.bartoszf.procgen.Tree.BSP;
 import pl.bartoszf.procgen.Utils.GeneratorUtils;
 
@@ -18,7 +18,7 @@ public class CityGenerator {
     private static float RATIO_W = 0.40f;
     private static float RATIO_H = 0.40f;
     private static int MIN_SIZE = 6;
-    private static int MAX_TRIES = 100;
+    private static int MAX_TRIES = 1000;
 
     private LandPlot plot;
     private int width, height;
@@ -29,7 +29,7 @@ public class CityGenerator {
         plot = new LandPlot(new Rectangle(x, y, width, height));
     }
 
-    public List<Tile> generate(int iters) {
+    public CityResult generate(int iters) {
         System.out.println(this.getClass().getName() + " started generating city");
         BSP<LandPlot> tree = splitLand(plot, iters);
         System.out.println(this.getClass().getName() + " ended generating city");
@@ -47,7 +47,12 @@ public class CityGenerator {
         }
 
         System.out.println(this.getClass().getName() + " ended parsing city");
-        return tiles;
+
+        CityResult result = new CityResult();
+        result.tiles = tiles;
+        result.center = plot.getRect().getCenter(new Vector2());
+
+        return result;
     }
 
     public List<Tile> getPaths(BSP<LandPlot> tree) {
@@ -75,7 +80,7 @@ public class CityGenerator {
 
         for (int y = (int) aCenter.y; y <= (int) (bCenter.y); y++) {
             for (int x = (int) aCenter.x; x <= (int) (bCenter.x); x++) {
-                tiles.add(new Mountain(new Vector2(x, y)));
+                tiles.add(new Path(new Vector2(x, y)));
             }
         }
 

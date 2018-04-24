@@ -11,7 +11,7 @@ public class HouseFloor extends Tile {
     }
 
     public HouseFloor(Vector2 position) {
-        super(TextureManager.INSTANCE.getTexture("tiles"), "house_floor", position, 0.1f);
+        super(TextureManager.INSTANCE.getTexture("tiles"), "house_floor", position, 100f);
     }
 
     @Override
