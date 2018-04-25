@@ -1,0 +1,306 @@
+Radomsko                                                                                                    
+Jastrzębie-Zdrój                                                                                          
+Wysokie Mazowieckie                                                                                         
+Tczew                                                                                                       
+Starachowice                                                                                                
+Lędziny                                                                                                    
+Krosno                                                                                                      
+Przemyśl                                                                                                   
+Tarnów                                                                                                     
+Wąbrzeźno                                                                                                 
+Ostrów Mazowiecka                                                                                          
+Kutno                                                                                                       
+Świdnica                                                                                                   
+Szczecin                                                                                                    
+Zgorzelec                                                                                                   
+Jelenia Góra                                                                                               
+Gliwice                                                                                                     
+Sosnowiec                                                                                                   
+Bielawa                                                                                                     
+Piła                                                                                                       
+Jordanów                                                                                                   
+Łańcut                                                                                                    
+Ełk                                                                                                        
+Legionowo                                                                                                   
+Radymno                                                                                                     
+Obrzycko                                                                                                    
+Czarnków                                                                                                   
+Zgierz                                                                                                      
+Przasnysz                                                                                                   
+Skórcz                                                                                                     
+Starogard Gdański                                                                                          
+Inowrocław                                                                                                 
+Polanica-Zdrój                                                                                             
+Bochnia                                                                                                     
+Kielce                                                                                                      
+Gorlice                                                                                                     
+Augustów                                                                                                   
+Wisła                                                                                                      
+Koszalin                                                                                                    
+Siemianowice Śląskie                                                                                      
+Siedlce                                                                                                     
+Puławy                                                                                                     
+Ciechocinek                                                                                                 
+Bartoszyce                                                                                                  
+Gostynin                                                                                                    
+Zduńska Wola                                                                                               
+Gorzów Wielkopolski                                                                                        
+Maków Mazowiecki                                                                                           
+Piekary Śląskie                                                                                           
+Mysłowice                                                                                                  
+Stalowa Wola                                                                                                
+Bielsko-Biała                                                                                              
+Ustka                                                                                                       
+Chorzów                                                                                                    
+Wejherowo                                                                                                   
+Złotów                                                                                                    
+Bukowno                                                                                                     
+Łódź                                                                                                     
+Poręba                                                                                                     
+Giżycko                                                                                                    
+Sopot                                                                                                       
+Ozorków                                                                                                    
+Nowe Miasto Lubawskie                                                                                       
+Nowa Sól                                                                                                   
+Radlin                                                                                                      
+Ciechanów                                                                                                  
+Kalisz                                                                                                      
+Leżajsk                                                                                                    
+Głogów                                                                                                    
+Józefów                                                                                                   
+Świętochłowice                                                                                           
+Warszawa                                                                                                    
+Grudziądz                                                                                                  
+Wojkowice                                                                                                   
+Bielsk Podlaski                                                                                             
+Kobyłka                                                                                                    
+Gdynia                                                                                                      
+Radzyń Podlaski                                                                                            
+Opole                                                                                                       
+Sieradz                                                                                                     
+Kłodzko                                                                                                    
+Kowal                                                                                                       
+Jarosław                                                                                                   
+Łaziska Górne                                                                                             
+Biłgoraj                                                                                                   
+Tomaszów Lubelski                                                                                          
+Szczecinek                                                                                                  
+Miasteczko Śląskie                                                                                        
+Duszniki-Zdrój                                                                                             
+Świeradów-Zdrój                                                                                          
+Białystok                                                                                                  
+Żary                                                                                                       
+Sławków                                                                                                   
+Reda                                                                                                        
+Wojcieszów                                                                                                 
+Dynów                                                                                                      
+Nowy Dwór Mazowiecki                                                                                       
+Człuchów                                                                                                  
+Konstantynów Łódzki                                                                                      
+Łaskarzew                                                                                                  
+Rypin                                                                                                       
+Oświęcim                                                                                                  
+Lubliniec                                                                                                   
+Aleksandrów Kujawski                                                                                       
+Łuków                                                                                                     
+Żory                                                                                                       
+Nowy Sącz                                                                                                  
+Lipno                                                                                                       
+Poznań                                                                                                     
+Świdwin                                                                                                    
+Toruń                                                                                                      
+Dzierżoniów                                                                                               
+Leszno                                                                                                      
+Orzesze                                                                                                     
+Jawor                                                                                                       
+Jedlina-Zdrój                                                                                              
+Słupsk                                                                                                     
+Racibórz                                                                                                   
+Lubartów                                                                                                   
+Rejowiec Fabryczny                                                                                          
+Dąbrowa Górnicza                                                                                          
+Kętrzyn                                                                                                    
+Kędzierzyn-Koźle                                                                                          
+Rawa Mazowiecka                                                                                             
+Kostrzyn nad Odrą                                                                                          
+Oława                                                                                                      
+Brzeg                                                                                                       
+Brodnica                                                                                                    
+Kraków                                                                                                     
+Lublin                                                                                                      
+Rydułtowy                                                                                                  
+Mikołów                                                                                                   
+Nieszawa                                                                                                    
+Iława                                                                                                      
+Kołobrzeg                                                                                                  
+Ostrołęka                                                                                                 
+Gubin                                                                                                       
+Nowa Ruda                                                                                                   
+Łowicz                                                                                                     
+Elbląg                                                                                                     
+Sanok                                                                                                       
+Bełchatów                                                                                                 
+Rybnik                                                                                                      
+Złotoryja                                                                                                  
+Wałbrzych                                                                                                  
+Sejny                                                                                                       
+Rumia                                                                                                       
+Zawidów                                                                                                    
+Krasnystaw                                                                                                  
+Bydgoszcz                                                                                                   
+Pabianice                                                                                                   
+Głowno                                                                                                     
+Chojnów                                                                                                    
+Wodzisław Śląski                                                                                         
+Ostróda                                                                                                    
+Sławno                                                                                                     
+Świdnik                                                                                                    
+Lubań                                                                                                      
+Chełmża                                                                                                   
+Lubaczów                                                                                                   
+Lidzbark Warmiński                                                                                         
+Tarnowskie Góry                                                                                            
+Koło                                                                                                       
+Kalety                                                                                                      
+Górowo Iławeckie                                                                                          
+Łeba                                                                                                       
+Piechowice                                                                                                  
+Żywiec                                                                                                     
+Pyskowice                                                                                                   
+Sochaczew                                                                                                   
+Włodawa                                                                                                    
+Boguszów-Gorce                                                                                             
+Będzin                                                                                                     
+Bytom                                                                                                       
+Zielonka                                                                                                    
+Kudowa-Zdrój                                                                                               
+Kwidzyn                                                                                                     
+Kraśnik                                                                                                    
+Siemiatycze                                                                                                 
+Turek                                                                                                       
+Zakopane                                                                                                    
+Ruda Śląska                                                                                               
+Kościerzyna                                                                                                
+Milanówek                                                                                                  
+Tomaszów Mazowiecki                                                                                        
+Lubin                                                                                                       
+Płock                                                                                                      
+Dęblin                                                                                                     
+Zamość                                                                                                    
+Świnoujście                                                                                               
+Ząbki                                                                                                      
+Podkowa Leśna                                                                                              
+Dębica                                                                                                     
+Gozdnica                                                                                                    
+Lębork                                                                                                     
+Hajnówka                                                                                                   
+Piława Górna                                                                                              
+Białogard                                                                                                  
+Łomża                                                                                                     
+Golub-Dobrzyń                                                                                              
+Piastów                                                                                                    
+Pruszków                                                                                                   
+Otwock                                                                                                      
+Ostrowiec Świętokrzyski                                                                                   
+Jastarnia                                                                                                   
+Chełm                                                                                                      
+Częstochowa                                                                                                
+Jaworzno                                                                                                    
+Sulmierzyce                                                                                                 
+Bieruń                                                                                                     
+Puck                                                                                                        
+Garwolin                                                                                                    
+Kamienna Góra                                                                                              
+Marki                                                                                                       
+Mszana Dolna                                                                                                
+Łęknica                                                                                                   
+Hel                                                                                                         
+Cieszyn                                                                                                     
+Chełmno                                                                                                    
+Włocławek                                                                                                 
+Grajewo                                                                                                     
+Sokołów Podlaski                                                                                          
+Działdowo                                                                                                  
+Piotrków Trybunalski                                                                                       
+Międzyrzec Podlaski                                                                                        
+Sierpc                                                                                                      
+Radom                                                                                                       
+Skarżysko-Kamienna                                                                                         
+Olsztyn                                                                                                     
+Pionki                                                                                                      
+Pruszcz Gdański                                                                                            
+Malbork                                                                                                     
+Kolno                                                                                                       
+Sulejówek                                                                                                  
+Szczytno                                                                                                    
+Żyrardów                                                                                                  
+Luboń                                                                                                      
+Biała Podlaska                                                                                             
+Radzionków                                                                                                 
+Puszczykowo                                                                                                 
+Ostrów Wielkopolski                                                                                        
+Wrocław                                                                                                    
+Ustroń                                                                                                     
+Krynica Morska                                                                                              
+Raciąż                                                                                                    
+Darłowo                                                                                                    
+Knurów                                                                                                     
+Zielona Góra                                                                                               
+Tarnobrzeg                                                                                                  
+Hrubieszów                                                                                                 
+Szczyrk                                                                                                     
+Czarna Woda                                                                                                 
+Legnica                                                                                                     
+Wągrowiec                                                                                                  
+Suwałki                                                                                                    
+Lubawa                                                                                                      
+Radziejów                                                                                                  
+Jasło                                                                                                      
+Konin                                                                                                       
+Stoczek Łukowski                                                                                           
+Nowy Targ                                                                                                   
+Limanowa                                                                                                    
+Terespol                                                                                                    
+Skierniewice                                                                                                
+Szczawno-Zdrój                                                                                             
+Łęczyca                                                                                                   
+Grybów                                                                                                     
+Brzeziny                                                                                                    
+Chodzież                                                                                                   
+Władysławowo                                                                                              
+Zambrów                                                                                                    
+Płońsk                                                                                                    
+Chojnice                                                                                                    
+Myszków                                                                                                    
+Świebodzice                                                                                                
+Braniewo                                                                                                    
+Przeworsk                                                                                                   
+Brańsk                                                                                                     
+Szklarska Poręba                                                                                           
+Gniezno                                                                                                     
+Kowary                                                                                                      
+Oleśnica                                                                                                   
+Tychy                                                                                                       
+Rzeszów                                                                                                    
+Bolesławiec                                                                                                
+Węgrów                                                                                                    
+Gdańsk                                                                                                     
+Pieszyce                                                                                                    
+Stargard Szczeciński                                                                                       
+Wałcz                                                                                                      
+Katowice                                                                                                    
+Czeladź                                                                                                    
+Zawiercie                                                                                                   
+Sandomierz                                                                                                  
+Słupca                                                                                                     
+Żagań                                                                                                     
+Mrągowo                                                                                                    
+Karpacz                                                                                                     
+Pszów                                                                                                      
+Kościan                                                                                                    
+Mława                                                                                                      
+Mińsk Mazowiecki                                                                                           
+Zabrze                                                                                                      
+Mielec                                                                                                      
+Imielin                                                                                                     
+Sucha Beskidzka                                                                                             

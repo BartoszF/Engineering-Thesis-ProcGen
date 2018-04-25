@@ -10,6 +10,7 @@ import pl.bartoszf.procgen.Combiners.LandCombiner;
 import pl.bartoszf.procgen.Controllers.MapController;
 import pl.bartoszf.procgen.Generators.CityGenerators.CivilizationGenerator;
 import pl.bartoszf.procgen.Generators.IslandGenerators.IslandGenerator;
+import pl.bartoszf.procgen.Generators.NameGenerators.MarkovChain.MarkovChain;
 import pl.bartoszf.procgen.Generators.PathGenerators.PathGenerator;
 import pl.bartoszf.procgen.Map.GameMap;
 import pl.bartoszf.procgen.Map.Tile;
@@ -33,6 +34,11 @@ public class Game extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
+
+		MarkovChain chain = new MarkovChain();
+		chain.analyzeFile("dictionaries/cities.txt");
+		for (int i = 0; i < 10; i++)
+			System.out.println(chain.getRandom());
 
 		TextureManager.INSTANCE.setTexture("tiles", "img/Tiles.pack");
 
