@@ -11,7 +11,7 @@ public class Jungle extends Tile {
     }
 
     public Jungle(Vector2 position) {
-        super(TextureManager.INSTANCE.getTexture("tiles"), "jungle", position, 1.7f);
+        super(TextureManager.INSTANCE.getTexture("tiles"), "jungle", position, 170f);
     }
 
     @Override

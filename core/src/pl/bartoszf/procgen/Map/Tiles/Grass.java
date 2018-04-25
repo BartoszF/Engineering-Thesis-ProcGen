@@ -11,7 +11,7 @@ public class Grass extends Tile {
     }
 
     public Grass(Vector2 position) {
-        super(TextureManager.INSTANCE.getTexture("tiles"), "grass", position, 1f);
+        super(TextureManager.INSTANCE.getTexture("tiles"), "grass", position, 100f);
     }
 
     @Override

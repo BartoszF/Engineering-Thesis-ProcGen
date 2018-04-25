@@ -37,7 +37,7 @@ public class CivilizationGenerator {
             CityGenerator city = new CityGenerator((int) rect.getX(), (int) rect.getY(), (int) rect.getWidth(), (int) rect.getHeight());
             CityCombiner tempCityCombiner = new CityCombiner(gameMap);
 
-            CityResult result = city.generate(3 + (int) Math.ceil(size / 100.0f));
+            CityResult result = city.generate(3 + (int) Math.ceil(size / 120.0f));
 
             tempCityCombiner.combine(result.tiles);
             gameMap.addCity(new City(result.center));

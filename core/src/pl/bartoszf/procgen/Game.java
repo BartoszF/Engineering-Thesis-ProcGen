@@ -4,7 +4,6 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import pl.bartoszf.procgen.Combiners.LandCombiner;
@@ -20,10 +19,9 @@ import pl.bartoszf.procgen.Utils.FrameRate;
 import pl.bartoszf.procgen.Utils.TextureManager;
 
 public class Game extends ApplicationAdapter {
-	public static int GAME_SIZE = 2048;
+	public static int GAME_SIZE = 1024;
 	public static PathFindingManager pathManager;
 	SpriteBatch batch;
-	Texture img;
 	private OrthographicCamera cam;
 	private GameMap gameMap;
 	private MapController controller;
@@ -64,10 +62,6 @@ public class Game extends ApplicationAdapter {
 		pathManager = new PathFindingManager(gameMap);
 
 		System.out.println("Generating civs");
-		/*CityGenerator tempCityGen = new CityGenerator(512, 512, 100, 100);
-		CityCombiner tempCityCombiner = new CityCombiner(gameMap);
-
-		tempCityCombiner.combine(tempCityGen.generate(3));*/
 		CivilizationGenerator civGenerator = new CivilizationGenerator(gameMap);
 		civGenerator.generate();
 

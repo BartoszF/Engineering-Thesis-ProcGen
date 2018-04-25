@@ -37,7 +37,7 @@ public class LandCombinerConfig {
                 }
                 if (tile.getMoisture() >= 0.5f) {
                     //Grassy shore
-                    return new Grass();
+                    return new Grass(pos);
                 }
                 return new Sand(pos);
             }

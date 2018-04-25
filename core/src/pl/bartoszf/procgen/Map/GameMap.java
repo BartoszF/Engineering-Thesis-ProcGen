@@ -48,7 +48,7 @@ public class GameMap implements IndexedGraph<Tile> {
                 if (y < 0 || y > size - 1) continue;
 
                 Tile tile = tiles[(int) y][(int) x];
-                if (tile == null || tile.getTexture() == null) continue;
+                if (tile == null /*|| tile.getTextureRegion() == null*/) continue;
                 sb.draw(tile.getTextureRegion(), tile.position.x, tile.position.y, Tile.TILE_SIZE + 2, Tile.TILE_SIZE + 2);
             }
         }
@@ -98,28 +98,29 @@ public class GameMap implements IndexedGraph<Tile> {
         for (int y = 0; y < size; y++) {
             for (int x = 0; x < size; x++) {
                 Tile t = tiles[y][x];
-                if (t == null) continue;
+                if (t == null)
+                    continue;
                 t.connections = new Array<>();
                 if (x > 0) {
                     t.connections.add(new TileConnection(t, tiles[y][x - 1]));
-                    if (y < size - 1) {
+                    /*if (y < size - 1) {
                         t.connections.add(new TileConnection(t, tiles[y + 1][x - 1]));
                     }
                     if (y > 0) {
                         t.connections.add(new TileConnection(t, tiles[y - 1][x - 1]));
-                    }
+                    }*/
                 }
                 if (y < size - 1) {
                     t.connections.add(new TileConnection(t, tiles[y + 1][x]));
                 }
                 if (x < size - 1) {
                     t.connections.add(new TileConnection(t, tiles[y][x + 1]));
-                    if (y < size - 1) {
+                    /*if (y < size - 1) {
                         t.connections.add(new TileConnection(t, tiles[y + 1][x + 1]));
                     }
                     if (y > 0) {
                         t.connections.add(new TileConnection(t, tiles[y - 1][x + 1]));
-                    }
+                    }*/
                 }
                 if (y > 0) {
                     t.connections.add(new TileConnection(t, tiles[y - 1][x]));

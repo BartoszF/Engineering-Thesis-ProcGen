@@ -7,6 +7,8 @@ import com.badlogic.gdx.math.Vector2;
 import pl.bartoszf.procgen.Map.City;
 import pl.bartoszf.procgen.Map.GameMap;
 import pl.bartoszf.procgen.Map.Tile;
+import pl.bartoszf.procgen.Map.Tiles.HouseFloor;
+import pl.bartoszf.procgen.Map.Tiles.HouseWall;
 import pl.bartoszf.procgen.Map.Tiles.Path;
 import pl.bartoszf.procgen.Pathfinding.PathSearcher;
 import pl.bartoszf.procgen.Pathfinding.TilePath;
@@ -34,12 +36,16 @@ public class PathGenerator {
             for (City c2 : map.getCities()) {
                 if (c1.equals(c2)) continue;
                 Vector2 c2v = c2.getCenter();
-                pathFinder.searchConnectionPath(map.getTileAt((int) c1v.x, (int) c1v.y), map.getTileAt((int) c2v.x, (int) c2v.y), GameMap.distance, tempSearch.getPath());
+                Tile tileA = map.getTileAt((int) c1v.x, (int) c1v.y);
+                Tile tileB = map.getTileAt((int) c2v.x, (int) c2v.y);
+                pathFinder.searchConnectionPath(tileA, tileB, GameMap.distance, tempSearch.getPath());
                 for (Connection<Tile> conn : tempSearch.getPath()) {
                     Tile from = conn.getFromNode();
                     Tile to = conn.getToNode();
 
-                    map.setTileAt((int) (from.getPosition().x / Tile.TILE_SIZE), (int) (from.getPosition().y / Tile.TILE_SIZE), new Path(from.getPosition())); //TODO: Change to path tile
+                    if (from instanceof HouseFloor || from instanceof HouseWall) continue;
+                    Vector2 newPos = new Vector2(from.getPosition().x / Tile.TILE_SIZE, from.getPosition().y / Tile.TILE_SIZE);
+                    map.setTileAt((int) newPos.x, (int) newPos.y, new Path(newPos));
                 }
                 map.populateConnections();
             }

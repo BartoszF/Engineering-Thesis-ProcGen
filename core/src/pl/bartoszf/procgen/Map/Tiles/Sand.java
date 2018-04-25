@@ -11,7 +11,7 @@ public class Sand extends Tile {
     }
 
     public Sand(Vector2 position) {
-        super(TextureManager.INSTANCE.getTexture("tiles"), "sand", position, 3f);
+        super(TextureManager.INSTANCE.getTexture("tiles"), "sand", position, 300f);
     }
 
     @Override

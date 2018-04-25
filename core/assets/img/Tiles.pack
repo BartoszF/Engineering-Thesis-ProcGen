@@ -1,74 +1,74 @@
 
 Tiles.png
 format: RGBA8888
-filter: Nearest,Nearest
+filter: Nearest,MipMapLinearNearest
 repeat: none
-house_floor
-  rotate: false
-  xy: 0, 99
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: -1
-house_wall
-  rotate: false
-  xy: 257, 99
-  size: 256, 256
-  orig: 256, 256
-  offset: 0, 0
-  index: -1
 dry_land
-  rotate: false
-  xy: 0, 66
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-grass
-  rotate: false
-  xy: 514, 323
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-jungle
-  rotate: false
-  xy: 0, 33
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-path
-  rotate: false
-  xy: 33, 66
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-sand
-  rotate: false
-  xy: 514, 290
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-snow
-  rotate: false
-  xy: 547, 323
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-stone
   rotate: false
   xy: 0, 0
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
+grass
+  rotate: false
+  xy: 33, 0
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+house_floor
+  rotate: false
+  xy: 66, 0
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+house_wall
+  rotate: false
+  xy: 99, 0
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+jungle
+  rotate: false
+  xy: 132, 0
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+path
+  rotate: false
+  xy: 165, 0
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+sand
+  rotate: false
+  xy: 198, 0
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+snow
+  rotate: false
+  xy: 231, 0
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+stone
+  rotate: false
+  xy: 264, 0
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
 water
   rotate: false
-  xy: 33, 33
+  xy: 297, 0
   size: 32, 32
   orig: 32, 32
   offset: 0, 0

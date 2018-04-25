@@ -11,7 +11,7 @@ public class Path extends Tile {
     }
 
     public Path(Vector2 position) {
-        super(TextureManager.INSTANCE.getTexture("tiles"), "path", position, 0.1f);
+        super(TextureManager.INSTANCE.getTexture("tiles"), "path", position, 1f);
     }
 
     @Override

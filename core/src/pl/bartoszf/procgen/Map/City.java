@@ -26,4 +26,22 @@ public class City {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof City)) return false;
+
+        City city = (City) o;
+
+        if (!center.equals(city.center)) return false;
+        return name != null ? name.equals(city.name) : city.name == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = center.hashCode();
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        return result;
+    }
 }

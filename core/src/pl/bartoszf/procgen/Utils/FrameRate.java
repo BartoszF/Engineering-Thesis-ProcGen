@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.TimeUtils;
+import pl.bartoszf.procgen.Game;
 import pl.bartoszf.procgen.Map.GameMap;
 import pl.bartoszf.procgen.Map.Tile;
 
@@ -48,10 +49,13 @@ public class FrameRate implements Disposable {
     public void render(OrthographicCamera camera2, GameMap map) {
         int x = (int) (camera2.position.x / Tile.TILE_SIZE);
         int y = (int) (camera2.position.y / Tile.TILE_SIZE);
-        Tile centerTile = map.getTileAt(x, y);
         String tile = "null";
-        if (centerTile != null) {
-            tile = centerTile.toString();//getClass().getName();
+        if (x >= 0 && x < Game.GAME_SIZE && y >= 0 && y < Game.GAME_SIZE) {
+            Tile centerTile = map.getTileAt(x, y);
+
+            if (centerTile != null) {
+                tile = centerTile.toString();//getClass().getName();
+            }
         }
         batch.begin();
         font.draw(batch, (int) frameRate + " fps " + camera2.position.toString() + " zoom : " + camera2.zoom + " Tile at center : " + tile, 3, Gdx.graphics.getHeight() - 3);

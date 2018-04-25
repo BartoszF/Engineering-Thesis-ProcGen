@@ -57,7 +57,19 @@ public class CityGenerator {
 
     public List<Tile> getPaths(BSP<LandPlot> tree) {
         List<Tile> tiles = new ArrayList<>();
-        if (tree.getLeftChild() == null || tree.getRightChild() == null) return null;
+
+        Rectangle plot = tree.getLeaf().getRect();
+        for (int y = (int) plot.getY(); y < (int) (plot.getY() + plot.getHeight()); y++) {
+            tiles.add(new Path(new Vector2((int) plot.getX(), y)));
+            tiles.add(new Path(new Vector2((int) (plot.getX() + plot.getWidth()), y)));
+        }
+
+        for (int x = (int) plot.getX(); x < (int) (plot.getX() + plot.getWidth()); x++) {
+            tiles.add(new Path(new Vector2(x, (int) plot.getY())));
+            tiles.add(new Path(new Vector2(x, (int) (plot.getY() + plot.getHeight()))));
+        }
+
+        if (tree.getLeftChild() == null || tree.getRightChild() == null) return tiles;
 
         tiles.addAll(pathBetween(tree.getLeftChild().getLeaf(), tree.getRightChild().getLeaf()));
 
@@ -93,16 +105,16 @@ public class CityGenerator {
         Rectangle rect = building.getRect();
 
         for (int x = (int) rect.getX(); x <= (int) rect.getX() + (int) rect.getWidth(); x++) {
-            Tile upper = new HouseWall(new Vector2(x, rect.getY()));
-            Tile lower = new HouseWall(new Vector2(x, rect.getY() + rect.getHeight()));
+            Tile upper = new HouseWall(new Vector2(x, (int) rect.getY()));
+            Tile lower = new HouseWall(new Vector2(x, (int) (rect.getY() + rect.getHeight())));
 
             tiles.add(upper);
             tiles.add(lower);
         }
 
         for (int y = (int) rect.getY(); y < (int) rect.getY() + (int) rect.getHeight(); y++) {
-            Tile left = new HouseWall(new Vector2(rect.getX(), y));
-            Tile right = new HouseWall(new Vector2(rect.getX() + rect.getWidth(), y));
+            Tile left = new HouseWall(new Vector2((int) rect.getX(), y));
+            Tile right = new HouseWall(new Vector2((int) (rect.getX() + rect.getWidth()), y));
 
             tiles.add(left);
             tiles.add(right);

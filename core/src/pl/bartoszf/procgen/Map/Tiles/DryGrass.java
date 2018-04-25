@@ -11,7 +11,7 @@ public class DryGrass extends Tile {
     }
 
     public DryGrass(Vector2 position) {
-        super(TextureManager.INSTANCE.getTexture("tiles"), "dry_land", position, 1f);
+        super(TextureManager.INSTANCE.getTexture("tiles"), "dry_land", position, 100f);
     }
 
     @Override

@@ -23,7 +23,7 @@ public class Tile {
 
     public Tile(TextureAtlas texture, String tileName, Vector2 position, float cost) {
         this.texture = texture;
-        this.setTextureRegion(texture.findRegion(tileName));
+        this.setTextureRegion(TextureManager.INSTANCE.getRegion(texture, tileName));
         this.position = position.scl(TILE_SIZE);
         this.size = TILE_SIZE;
         this.cost = cost;

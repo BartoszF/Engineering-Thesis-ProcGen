@@ -11,7 +11,7 @@ public class Snow extends Tile {
     }
 
     public Snow(Vector2 position) {
-        super(TextureManager.INSTANCE.getTexture("tiles"), "snow", position, 3f);
+        super(TextureManager.INSTANCE.getTexture("tiles"), "snow", position, 300f);
     }
 
     @Override

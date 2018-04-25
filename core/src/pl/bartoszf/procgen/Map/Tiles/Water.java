@@ -11,7 +11,7 @@ public class Water extends Tile {
     }
 
     public Water(Vector2 position) {
-        super(TextureManager.INSTANCE.getTexture("tiles"), "water", position, 3000000f);
+        super(TextureManager.INSTANCE.getTexture("tiles"), "water", position, 5000f);
     }
 
     @Override
