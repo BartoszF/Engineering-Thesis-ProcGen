@@ -60,13 +60,13 @@ public class CityGenerator {
 
         Rectangle plot = tree.getLeaf().getRect();
         for (int y = (int) plot.getY(); y < (int) (plot.getY() + plot.getHeight()); y++) {
-            tiles.add(new Path(new Vector2((int) plot.getX(), y)));
-            tiles.add(new Path(new Vector2((int) (plot.getX() + plot.getWidth()), y)));
+            tiles.add(new Path(new Vector2((int) plot.getX(), y), 1.0f));
+            tiles.add(new Path(new Vector2((int) (plot.getX() + plot.getWidth()), y), 1.0f));
         }
 
         for (int x = (int) plot.getX(); x < (int) (plot.getX() + plot.getWidth()); x++) {
-            tiles.add(new Path(new Vector2(x, (int) plot.getY())));
-            tiles.add(new Path(new Vector2(x, (int) (plot.getY() + plot.getHeight()))));
+            tiles.add(new Path(new Vector2(x, (int) plot.getY()), 1.0f));
+            tiles.add(new Path(new Vector2(x, (int) (plot.getY() + plot.getHeight())), 1.0f));
         }
 
         if (tree.getLeftChild() == null || tree.getRightChild() == null) return tiles;
@@ -92,7 +92,7 @@ public class CityGenerator {
 
         for (int y = (int) aCenter.y; y <= (int) (bCenter.y); y++) {
             for (int x = (int) aCenter.x; x <= (int) (bCenter.x); x++) {
-                tiles.add(new Path(new Vector2(x, y)));
+                tiles.add(new Path(new Vector2(x, y), 1.0f));
             }
         }
 
@@ -105,16 +105,16 @@ public class CityGenerator {
         Rectangle rect = building.getRect();
 
         for (int x = (int) rect.getX(); x <= (int) rect.getX() + (int) rect.getWidth(); x++) {
-            Tile upper = new HouseWall(new Vector2(x, (int) rect.getY()));
-            Tile lower = new HouseWall(new Vector2(x, (int) (rect.getY() + rect.getHeight())));
+            Tile upper = new HouseWall(new Vector2(x, (int) rect.getY()), 1.0f);
+            Tile lower = new HouseWall(new Vector2(x, (int) (rect.getY() + rect.getHeight())), 1.0f);
 
             tiles.add(upper);
             tiles.add(lower);
         }
 
         for (int y = (int) rect.getY(); y < (int) rect.getY() + (int) rect.getHeight(); y++) {
-            Tile left = new HouseWall(new Vector2((int) rect.getX(), y));
-            Tile right = new HouseWall(new Vector2((int) (rect.getX() + rect.getWidth()), y));
+            Tile left = new HouseWall(new Vector2((int) rect.getX(), y), 1.0f);
+            Tile right = new HouseWall(new Vector2((int) (rect.getX() + rect.getWidth()), y), 1.0f);
 
             tiles.add(left);
             tiles.add(right);
@@ -130,7 +130,7 @@ public class CityGenerator {
 
         for (int y = (int) rect.getY() + 1; y < (int) rect.getY() + (int) rect.getHeight(); y++) {
             for (int x = (int) rect.getX() + 1; x < (int) rect.getX() + (int) rect.getWidth(); x++) {
-                tiles.add(new HouseFloor(new Vector2(x, y)));
+                tiles.add(new HouseFloor(new Vector2(x, y), 1.0f));
             }
         }
 

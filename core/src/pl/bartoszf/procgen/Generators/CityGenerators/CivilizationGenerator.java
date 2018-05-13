@@ -5,6 +5,7 @@ import pl.bartoszf.procgen.Combiners.CityCombiner;
 import pl.bartoszf.procgen.Game;
 import pl.bartoszf.procgen.Map.City;
 import pl.bartoszf.procgen.Map.GameMap;
+import pl.bartoszf.procgen.Map.MultipleTile;
 import pl.bartoszf.procgen.Map.Tile;
 import pl.bartoszf.procgen.Map.Tiles.HouseFloor;
 import pl.bartoszf.procgen.Map.Tiles.HouseWall;
@@ -57,6 +58,20 @@ public class CivilizationGenerator {
                 if (tile instanceof HouseFloor) return false;
                 if (tile instanceof HouseWall) return false;
                 if (tile instanceof Water) return false;
+                if (tile instanceof MultipleTile) {
+                    MultipleTile t = (MultipleTile) tile;
+                    Tile a = t.getTileA();
+                    if (a instanceof Mountain) return false;
+                    if (a instanceof HouseFloor) return false;
+                    if (a instanceof HouseWall) return false;
+                    if (a instanceof Water) return false;
+
+                    Tile b = t.getTileB();
+                    if (b instanceof Mountain) return false;
+                    if (b instanceof HouseFloor) return false;
+                    if (b instanceof HouseWall) return false;
+                    if (b instanceof Water) return false;
+                }
             }
         }
 

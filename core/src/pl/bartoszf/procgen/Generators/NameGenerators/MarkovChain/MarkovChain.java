@@ -22,7 +22,6 @@ public class MarkovChain {
     }
 
     public void analyzeFile(String path) {
-        String temp = "Radom\nWrocław\nWarszawa\nSłupsk\nKozienice\nGdańsk\nGdynia\nPoznań\nKraków\nPabianice\n";
 
         try {
             BufferedReader br = new BufferedReader(new FileReader(path));

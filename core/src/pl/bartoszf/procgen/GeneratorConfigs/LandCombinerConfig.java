@@ -1,101 +1,110 @@
 package pl.bartoszf.procgen.GeneratorConfigs;
 
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import pl.bartoszf.procgen.Generators.IslandGenerators.GeneratorTile;
+import pl.bartoszf.procgen.Map.MultipleTile;
 import pl.bartoszf.procgen.Map.Tile;
 import pl.bartoszf.procgen.Map.Tiles.*;
 
+import java.util.Iterator;
+import java.util.PriorityQueue;
+
 public class LandCombinerConfig {
+
+    public static PriorityQueue<TileDefinition> tileDefinitions = new PriorityQueue<>();
+    public static float MULTIPLE_DISTANCE = 0.32f;
+
+    public static void initDefinitions() {
+        //Vector as follows : Height, Temp, Moisture
+        tileDefinitions.add(new TileDefinition(new Vector3(0.1f, 0, 0), new Water()));
+        //Shores
+        //Cold Shores
+        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.1f, 0.1f), new Rock()));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.1f, 0.5f), new Ice()));
+        //Warm Shores
+        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.5f, 0.25f), new Sand()));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.5f, 0.75f), new Grass()));
+
+        //Normal land
+        //Cold
+        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.15f, 0.15f), new Ice()));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.15f, 0.6f), new Snow()));
+        //Normal temp
+        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.5f, 0.2f), new DryGrass()));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.5f, 0.5f), new Grass()));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.5f, 0.85f), new Jungle()));
+        //Hot
+        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.9f, 0.2f), new Sand()));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.9f, 0.475f), new DryGrass()));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.9f, 0.75f), new Jungle()));
+
+        //Mountains
+        //Cold
+        tileDefinitions.add(new TileDefinition(new Vector3(0.8f, 0.15f, 0.0f), new Mountain()));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.8f, 0.15f, 0.5f), new Snowy_Mountain()));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.8f, 0.15f, 1.0f), new Snowy_Mountain()));
+        //Otherwise
+        tileDefinitions.add(new TileDefinition(new Vector3(0.8f, 0.4f, 0.0f), new Mountain()));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.8f, 0.4f, 0.5f), new Mountain()));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.8f, 0.4f, 1.0f), new Snowy_Mountain()));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.8f, 0.75f, 0.0f), new Mountain()));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.8f, 0.75f, 0.5f), new Mountain()));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.8f, 0.75f, 1.0f), new Mountain()));
+
+    }
+
+    public static TileResult[] getNearest(Vector3 pos) {
+        TileResult[] selected = new TileResult[2];
+
+        float min = Float.POSITIVE_INFINITY;
+        TileDefinition firstDef = null;
+
+        Iterator<TileDefinition> it = tileDefinitions.iterator();
+        while (it.hasNext()) {
+            TileDefinition def = it.next();
+            float distance = def.position.dst(pos);
+            if (distance < min) {
+                min = distance;
+                firstDef = def;
+                selected[0] = new TileResult(distance, def.tile);
+            }
+        }
+        min = Float.POSITIVE_INFINITY;
+
+        it = tileDefinitions.iterator();
+        while (it.hasNext()) {
+            TileDefinition def = it.next();
+            float distance = def.position.dst(pos);
+            float d = def.position.dst(firstDef.position);
+            if (distance < min && !def.tile.equals(selected[0].tile) && def.position.dst(firstDef.position) < MULTIPLE_DISTANCE) {
+                min = distance;
+                selected[1] = new TileResult(distance, def.tile);
+            }
+        }
+
+        return selected;
+    }
 
     public static Tile getMapTile(GeneratorTile tile, Vector2 pos) {
         //Ocean
         if (tile.getHeight() < 0.2f) {
-            return new Water(pos);
+            return new Water(pos, tile.getHeight());
         }
 
         if (tile.isRiver()) {
-            return new Water(pos);
+            return new Water(pos, tile.getHeight());
         }
 
-        //Shore
-        if (tile.getHeight() >= 0.2f && tile.getHeight() <= 0.225f) {
-            //Cold - icy shore
-            if (tile.getTemp() < 0.3f) {
-                if (tile.getMoisture() < 0.3f) {
-                    return new Rock(pos);
-                }
-                if (tile.getMoisture() >= 0.3f) {
-                    //Ice
-                    return new Snow(pos);
-                }
-                return new Sand(pos);
-            }
-            //Warm
-            if (tile.getTemp() >= 0.3f) {
-                if (tile.getMoisture() < 0.5f) {
-                    return new Sand(pos);
-                }
-                if (tile.getMoisture() >= 0.5f) {
-                    //Grassy shore
-                    return new Grass(pos);
-                }
-                return new Sand(pos);
-            }
+        TileResult[] selected = getNearest(new Vector3(tile.getHeight(), tile.getTemp(), tile.getMoisture()));
 
-            return new Sand(pos);
+        if (selected[1] != null)
+            return new MultipleTile(selected[0].tile.clone(), selected[1].tile.clone(), pos, tile.getHeight(), selected[0].distance, selected[1].distance);
+        else {
+            Tile stile = selected[0].tile.clone();
+            stile.setPosition(pos);
+            stile.setHeight(tile.getHeight());
+            return stile;
         }
-
-        //Normal land
-        if (tile.getHeight() > 0.225f && tile.getHeight() <= 0.7f) {
-            if (tile.getTemp() < 0.3f) {
-                //Cold
-                if (tile.getMoisture() < 0.3f) {
-                    return new Rock(pos);
-                }
-                if (tile.getMoisture() >= 0.3f) {
-                    return new Snow(pos);
-                }
-            }
-            if (tile.getTemp() >= 0.3f && tile.getTemp() < 0.8f) {
-                //Normal temp
-                if (tile.getMoisture() < 0.4f) {
-                    //Dry Land
-                    return new DryGrass(pos);
-                }
-                if (tile.getMoisture() >= 0.4f && tile.getMoisture() <= 0.75f) {
-                    return new Grass(pos);
-                }
-                if (tile.getMoisture() > 0.75f) {
-                    return new Jungle(pos);
-                }
-            }
-            if (tile.getTemp() >= 0.8f) {
-                //Desert or jungle
-                if (tile.getMoisture() < 0.45f) {
-                    return new Sand(pos);
-                }
-                if (tile.getMoisture() >= 0.45f && tile.getMoisture() <= 0.5f) {
-                    return new DryGrass(pos);
-                }
-                if (tile.getMoisture() > 0.5f) {
-                    //Jungle
-                    return new Jungle(pos);
-                }
-            }
-            return new Grass(pos);
-        }
-
-        //Mountains
-        if (tile.getHeight() > 0.7f) {
-            if (tile.getTemp() >= 0.3f) {
-                //Ok
-            }
-            if (tile.getTemp() < 0.3f) {
-                //Icy mountain
-            }
-            return new Mountain(pos);
-        }
-
-        return null;
     }
 }

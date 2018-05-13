@@ -1,6 +1,7 @@
 package pl.bartoszf.procgen.Map;
 
 import com.badlogic.gdx.ai.pfa.Connection;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
@@ -9,7 +10,7 @@ import pl.bartoszf.procgen.Utils.TextureManager;
 
 public class Tile {
 
-    public static float TILE_SIZE = 128;
+    public static float TILE_SIZE = 256;
     public Array<Connection<Tile>> connections;
     Vector2 position;
     float size;
@@ -21,12 +22,25 @@ public class Tile {
     public Tile() {
     }
 
-    public Tile(TextureAtlas texture, String tileName, Vector2 position, float cost) {
+    public Tile(TextureAtlas texture, String tileName) {
+        this.texture = texture;
+        this.setTextureRegion(TextureManager.INSTANCE.getRegion(texture, tileName));
+    }
+
+    public Tile(TextureAtlas texture, String tileName, Vector2 position, float cost, float height) {
         this.texture = texture;
         this.setTextureRegion(TextureManager.INSTANCE.getRegion(texture, tileName));
         this.position = position.scl(TILE_SIZE);
         this.size = TILE_SIZE;
         this.cost = cost;
+        this.height = height;
+    }
+
+    public void draw(SpriteBatch sb) {
+        float height = getHeight();
+        float brightness = 0.75f + height / 4;
+        sb.setColor(brightness, brightness, brightness, 1.0f);
+        sb.draw(getTextureRegion(), position.x, position.y, Tile.TILE_SIZE + 2, Tile.TILE_SIZE + 2);
     }
 
     public Vector2 getPosition() {
@@ -34,7 +48,7 @@ public class Tile {
     }
 
     public void setPosition(Vector2 position) {
-        this.position = position;
+        this.position = position.scl(TILE_SIZE);
     }
 
     public float getSize() {

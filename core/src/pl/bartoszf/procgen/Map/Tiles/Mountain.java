@@ -7,15 +7,15 @@ import pl.bartoszf.procgen.Utils.TextureManager;
 public class Mountain extends Tile {
 
     public Mountain() {
-        super();
+        super(TextureManager.INSTANCE.getTexture("tiles"), "stone");
     }
 
-    public Mountain(Vector2 position) {
-        super(TextureManager.INSTANCE.getTexture("tiles"), "stone", position, 100000f);
+    public Mountain(Vector2 position, float height) {
+        super(TextureManager.INSTANCE.getTexture("tiles"), "stone", position, 100000f, height);
     }
 
     @Override
     public Tile clone() {
-        return new Grass();
+        return new Mountain();
     }
 }

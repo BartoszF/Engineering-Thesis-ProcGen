@@ -45,7 +45,7 @@ public class PathGenerator {
 
                     if (from instanceof HouseFloor || from instanceof HouseWall) continue;
                     Vector2 newPos = new Vector2(from.getPosition().x / Tile.TILE_SIZE, from.getPosition().y / Tile.TILE_SIZE);
-                    map.setTileAt((int) newPos.x, (int) newPos.y, new Path(newPos));
+                    map.setTileAt((int) newPos.x, (int) newPos.y, new Path(newPos, from.getHeight()));
                 }
                 map.populateConnections();
             }

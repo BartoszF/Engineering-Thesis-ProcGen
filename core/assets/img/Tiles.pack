@@ -1,74 +1,88 @@
 
 Tiles.png
 format: RGBA8888
-filter: Nearest,MipMapLinearNearest
+filter: Nearest,Nearest
 repeat: none
 dry_land
   rotate: false
-  xy: 0, 0
+  xy: 1, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 grass
   rotate: false
-  xy: 33, 0
+  xy: 35, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 house_floor
   rotate: false
-  xy: 66, 0
+  xy: 69, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 house_wall
   rotate: false
-  xy: 99, 0
+  xy: 103, 1
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+ice
+  rotate: false
+  xy: 137, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 jungle
   rotate: false
-  xy: 132, 0
+  xy: 171, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 path
   rotate: false
-  xy: 165, 0
+  xy: 205, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 sand
   rotate: false
-  xy: 198, 0
+  xy: 239, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 snow
   rotate: false
-  xy: 231, 0
+  xy: 273, 1
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+snowy_mountain
+  rotate: false
+  xy: 307, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 stone
   rotate: false
-  xy: 264, 0
+  xy: 341, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 water
   rotate: false
-  xy: 297, 0
+  xy: 375, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0

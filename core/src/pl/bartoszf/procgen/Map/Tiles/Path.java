@@ -7,11 +7,11 @@ import pl.bartoszf.procgen.Utils.TextureManager;
 public class Path extends Tile {
 
     public Path() {
-        super();
+        super(TextureManager.INSTANCE.getTexture("tiles"), "path");
     }
 
-    public Path(Vector2 position) {
-        super(TextureManager.INSTANCE.getTexture("tiles"), "path", position, 1f);
+    public Path(Vector2 position, float height) {
+        super(TextureManager.INSTANCE.getTexture("tiles"), "path", position, 1f, height);
     }
 
     @Override

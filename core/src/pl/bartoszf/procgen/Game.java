@@ -8,10 +8,10 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import pl.bartoszf.procgen.Combiners.LandCombiner;
 import pl.bartoszf.procgen.Controllers.MapController;
+import pl.bartoszf.procgen.GeneratorConfigs.LandCombinerConfig;
 import pl.bartoszf.procgen.Generators.CityGenerators.CivilizationGenerator;
 import pl.bartoszf.procgen.Generators.IslandGenerators.IslandGenerator;
 import pl.bartoszf.procgen.Generators.NameGenerators.MarkovChain.MarkovChain;
-import pl.bartoszf.procgen.Generators.PathGenerators.PathGenerator;
 import pl.bartoszf.procgen.Map.GameMap;
 import pl.bartoszf.procgen.Map.Tile;
 import pl.bartoszf.procgen.Pathfinding.PathFindingManager;
@@ -60,6 +60,8 @@ public class Game extends ApplicationAdapter {
 
 		fps = new FrameRate();
 
+		LandCombinerConfig.initDefinitions();
+
 		IslandGenerator generator = new IslandGenerator();
 
 		LandCombiner combiner = new LandCombiner(generator.generateIsland(GAME_SIZE), GAME_SIZE);
@@ -71,10 +73,10 @@ public class Game extends ApplicationAdapter {
 		CivilizationGenerator civGenerator = new CivilizationGenerator(gameMap);
 		civGenerator.generate();
 
-		gameMap.populateConnections();
+		/*gameMap.populateConnections();
 
 		PathGenerator pathGen = new PathGenerator(gameMap);
-		pathGen.generate();
+		pathGen.generate();*/
 	}
 
 	@Override

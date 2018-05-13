@@ -7,11 +7,11 @@ import pl.bartoszf.procgen.Utils.TextureManager;
 public class Rock extends Tile {
 
     public Rock() {
-        super();
+        super(TextureManager.INSTANCE.getTexture("tiles"), "stone");
     }
 
-    public Rock(Vector2 position) {
-        super(TextureManager.INSTANCE.getTexture("tiles"), "stone", position, 400f);
+    public Rock(Vector2 position, float height) {
+        super(TextureManager.INSTANCE.getTexture("tiles"), "stone", position, 400f, height);
     }
 
     @Override

@@ -7,11 +7,11 @@ import pl.bartoszf.procgen.Utils.TextureManager;
 public class Grass extends Tile {
 
     public Grass() {
-        super();
+        super(TextureManager.INSTANCE.getTexture("tiles"), "grass");
     }
 
-    public Grass(Vector2 position) {
-        super(TextureManager.INSTANCE.getTexture("tiles"), "grass", position, 100f);
+    public Grass(Vector2 position, float height) {
+        super(TextureManager.INSTANCE.getTexture("tiles"), "grass", position, 100f, height);
     }
 
     @Override

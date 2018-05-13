@@ -7,11 +7,11 @@ import pl.bartoszf.procgen.Utils.TextureManager;
 public class Snow extends Tile {
 
     public Snow() {
-        super();
+        super(TextureManager.INSTANCE.getTexture("tiles"), "snow");
     }
 
-    public Snow(Vector2 position) {
-        super(TextureManager.INSTANCE.getTexture("tiles"), "snow", position, 300f);
+    public Snow(Vector2 position, float height) {
+        super(TextureManager.INSTANCE.getTexture("tiles"), "snow", position, 300f, height);
     }
 
     @Override

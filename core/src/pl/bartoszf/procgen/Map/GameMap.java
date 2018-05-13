@@ -49,7 +49,7 @@ public class GameMap implements IndexedGraph<Tile> {
 
                 Tile tile = tiles[(int) y][(int) x];
                 if (tile == null /*|| tile.getTextureRegion() == null*/) continue;
-                sb.draw(tile.getTextureRegion(), tile.position.x, tile.position.y, Tile.TILE_SIZE + 2, Tile.TILE_SIZE + 2);
+                tile.draw(sb);
             }
         }
     }

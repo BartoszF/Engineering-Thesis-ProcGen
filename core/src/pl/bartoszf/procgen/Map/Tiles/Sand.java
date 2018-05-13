@@ -7,11 +7,11 @@ import pl.bartoszf.procgen.Utils.TextureManager;
 public class Sand extends Tile {
 
     public Sand() {
-        super();
+        super(TextureManager.INSTANCE.getTexture("tiles"), "sand");
     }
 
-    public Sand(Vector2 position) {
-        super(TextureManager.INSTANCE.getTexture("tiles"), "sand", position, 300f);
+    public Sand(Vector2 position, float height) {
+        super(TextureManager.INSTANCE.getTexture("tiles"), "sand", position, 300f, height);
     }
 
     @Override
