@@ -108,7 +108,7 @@ public class RiverGenerator extends BaseLandGenerator {
             for (int x = 0; x < getSize(); x++) {
                 Vector2 pos = new Vector2(x, y);
                 double temp = fastNoise.GetNoise(x, y);
-                float gradient = GeneratorUtils.getGradient(x, y, getSize());
+                float gradient = GeneratorUtils.getRadialGradient(x, y, getSize());
                 double noise = ((temp + 1) / 2) * gradient;
 
                 getTiles().get(pos).setTemp((float) noise);

@@ -3,7 +3,6 @@ package pl.bartoszf.procgen.Generators.IslandGenerators;
 import com.badlogic.gdx.math.Vector2;
 import pl.bartoszf.procgen.Generators.NoiseGenerators.HeightGenerator;
 import pl.bartoszf.procgen.Generators.NoiseGenerators.MoistureGenerator;
-import pl.bartoszf.procgen.Generators.NoiseGenerators.TempGenerator;
 import pl.bartoszf.procgen.Utils.GeneratorUtils;
 
 import java.util.HashMap;
@@ -21,7 +20,6 @@ public class IslandGenerator {
 
         HeightGenerator heightGenerator = new HeightGenerator(size);
         MoistureGenerator moistureGenerator = new MoistureGenerator(size);
-        TempGenerator tempGenerator = new TempGenerator(size);
 
         float centerSize = size * 0.5f;
         float modifier = size / 10;
@@ -32,7 +30,7 @@ public class IslandGenerator {
                 Vector2 pos = new Vector2(x, y);
 
                 double heightBase = heightGenerator.getNoiseAt(x, y);
-                float gradient = GeneratorUtils.getGradient(x, y, (int) center.x, (int) center.y, size);
+                float gradient = GeneratorUtils.getRadialGradient(x, y, (int) center.x, (int) center.y, size);
                 double height = ((heightBase + 1) / 2) * gradient;
 
                 tiles.put(pos, new GeneratorTile());
@@ -44,14 +42,9 @@ public class IslandGenerator {
 
                 tiles.get(pos).setMoisture((float) moist);
 
-                double tempBase = tempGenerator.getNoiseAt(x, y);
-                double temp = ((tempBase + 1) / 2);
+                double temp = 1.0 - GeneratorUtils.getVerticalGradient(y, size, 0.01f);//((tempBase + 1) / 2);
 
                 tiles.get(pos).setTemp((float) temp);
-
-                /*Tile result = LandCombinerConfig.getMapTile(tiles.get(pos), pos);
-                if (result != null)
-                    land[y][x] = result;*/
             }
         }
 

@@ -15,7 +15,6 @@ import pl.bartoszf.procgen.Generators.NameGenerators.MarkovChain.MarkovChain;
 import pl.bartoszf.procgen.Map.GameMap;
 import pl.bartoszf.procgen.Map.Tile;
 import pl.bartoszf.procgen.Pathfinding.PathFindingManager;
-import pl.bartoszf.procgen.Utils.FastNoise;
 import pl.bartoszf.procgen.Utils.FrameRate;
 import pl.bartoszf.procgen.Utils.TextureManager;
 
@@ -27,7 +26,6 @@ public class Game extends ApplicationAdapter {
 	private GameMap gameMap;
 	private MapController controller;
 	private float camSize = 1024 * 32 * 1.2f;
-	private FastNoise fastNoise;
 	private FrameRate fps;
 	private BitmapFont font;
 	

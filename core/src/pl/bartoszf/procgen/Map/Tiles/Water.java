@@ -7,7 +7,7 @@ import pl.bartoszf.procgen.Utils.TextureManager;
 public class Water extends Tile {
 
     public Water() {
-        super(TextureManager.INSTANCE.getTexture("tiles"), "water");
+        super(TextureManager.INSTANCE.getTexture("tiles"), "water", 5000f);
     }
 
     public Water(Vector2 position, float height) {

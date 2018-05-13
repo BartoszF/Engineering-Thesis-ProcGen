@@ -7,7 +7,7 @@ import pl.bartoszf.procgen.Utils.TextureManager;
 public class Snow extends Tile {
 
     public Snow() {
-        super(TextureManager.INSTANCE.getTexture("tiles"), "snow");
+        super(TextureManager.INSTANCE.getTexture("tiles"), "snow", 300f);
     }
 
     public Snow(Vector2 position, float height) {

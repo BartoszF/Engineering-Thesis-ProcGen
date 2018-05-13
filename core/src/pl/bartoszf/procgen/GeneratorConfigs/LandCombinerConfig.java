@@ -17,14 +17,19 @@ public class LandCombinerConfig {
 
     public static void initDefinitions() {
         //Vector as follows : Height, Temp, Moisture
-        tileDefinitions.add(new TileDefinition(new Vector3(0.1f, 0, 0), new Water()));
+        //tileDefinitions.add(new TileDefinition(new Vector3(0.1f, 0, 0), new Water()));
         //Shores
         //Cold Shores
         tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.1f, 0.1f), new Rock()));
         tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.1f, 0.5f), new Ice()));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.1f, 0.75f), new Snow()));
         //Warm Shores
         tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.5f, 0.25f), new Sand()));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.5f, 0.5f), new Sand()));
         tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.5f, 0.75f), new Grass()));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.75f, 0.25f), new Sand()));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.75f, 0.5f), new Sand()));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.75f, 0.75f), new Sand()));
 
         //Normal land
         //Cold
@@ -34,6 +39,9 @@ public class LandCombinerConfig {
         tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.5f, 0.2f), new DryGrass()));
         tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.5f, 0.5f), new Grass()));
         tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.5f, 0.85f), new Jungle()));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.7f, 0.2f), new Sand()));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.7f, 0.5f), new DryGrass()));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.7f, 0.85f), new Jungle()));
         //Hot
         tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.9f, 0.2f), new Sand()));
         tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.9f, 0.475f), new DryGrass()));

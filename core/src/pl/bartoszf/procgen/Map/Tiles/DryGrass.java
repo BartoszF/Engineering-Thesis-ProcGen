@@ -7,7 +7,7 @@ import pl.bartoszf.procgen.Utils.TextureManager;
 public class DryGrass extends Tile {
 
     public DryGrass() {
-        super(TextureManager.INSTANCE.getTexture("tiles"), "dry_land");
+        super(TextureManager.INSTANCE.getTexture("tiles"), "dry_land", 100f);
     }
 
     public DryGrass(Vector2 position, float height) {

@@ -22,9 +22,10 @@ public class Tile {
     public Tile() {
     }
 
-    public Tile(TextureAtlas texture, String tileName) {
+    public Tile(TextureAtlas texture, String tileName, float cost) {
         this.texture = texture;
         this.setTextureRegion(TextureManager.INSTANCE.getRegion(texture, tileName));
+        this.cost = cost;
     }
 
     public Tile(TextureAtlas texture, String tileName, Vector2 position, float cost, float height) {
@@ -38,7 +39,7 @@ public class Tile {
 
     public void draw(SpriteBatch sb) {
         float height = getHeight();
-        float brightness = 0.75f + height / 4;
+        float brightness = 0.83f + height / 6f;
         sb.setColor(brightness, brightness, brightness, 1.0f);
         sb.draw(getTextureRegion(), position.x, position.y, Tile.TILE_SIZE + 2, Tile.TILE_SIZE + 2);
     }

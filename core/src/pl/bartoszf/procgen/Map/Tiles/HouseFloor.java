@@ -7,7 +7,7 @@ import pl.bartoszf.procgen.Utils.TextureManager;
 public class HouseFloor extends Tile {
 
     public HouseFloor() {
-        super(TextureManager.INSTANCE.getTexture("tiles"), "house_floor");
+        super(TextureManager.INSTANCE.getTexture("tiles"), "house_floor", 100f);
     }
 
     public HouseFloor(Vector2 position, float height) {

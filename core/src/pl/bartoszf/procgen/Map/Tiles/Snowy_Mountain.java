@@ -7,7 +7,7 @@ import pl.bartoszf.procgen.Utils.TextureManager;
 public class Snowy_Mountain extends Tile {
 
     public Snowy_Mountain() {
-        super(TextureManager.INSTANCE.getTexture("tiles"), "snowy_mountain");
+        super(TextureManager.INSTANCE.getTexture("tiles"), "snowy_mountain", 400f);
     }
 
     public Snowy_Mountain(Vector2 position, float height) {

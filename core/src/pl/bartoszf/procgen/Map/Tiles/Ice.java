@@ -7,7 +7,7 @@ import pl.bartoszf.procgen.Utils.TextureManager;
 public class Ice extends Tile {
 
     public Ice() {
-        super(TextureManager.INSTANCE.getTexture("tiles"), "ice");
+        super(TextureManager.INSTANCE.getTexture("tiles"), "ice", 400f);
     }
 
     public Ice(Vector2 position, float height) {

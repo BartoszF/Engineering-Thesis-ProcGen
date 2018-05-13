@@ -7,7 +7,7 @@ import pl.bartoszf.procgen.Utils.TextureManager;
 public class Jungle extends Tile {
 
     public Jungle() {
-        super(TextureManager.INSTANCE.getTexture("tiles"), "jungle");
+        super(TextureManager.INSTANCE.getTexture("tiles"), "jungle", 170f);
     }
 
     public Jungle(Vector2 position, float height) {
