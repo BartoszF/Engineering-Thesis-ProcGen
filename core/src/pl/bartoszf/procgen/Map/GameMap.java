@@ -57,6 +57,17 @@ public class GameMap implements IndexedGraph<Tile> {
             }
         }
 
+        for (float y = points[1]; y >= points[0]; y -= 1.0f) {
+            for (float x = points[2]; x <= points[3]; x += 1.0f) {
+                if (x < 0 || x > size - 1) continue;
+                if (y < 0 || y > size - 1) continue;
+
+                Tile tile = tiles[(int) y][(int) x];
+                if (tile == null) continue;
+                tile.drawEntity(sb);
+            }
+        }
+
         cityBatch.setProjectionMatrix(cam.combined);
         cityBatch.begin();
         Game.font.setColor(1.0f, 1.0f, 1.0f, 1.0f);

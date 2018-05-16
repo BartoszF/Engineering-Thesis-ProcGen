@@ -6,18 +6,26 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
+import pl.bartoszf.procgen.Utils.GeneratorUtils;
 import pl.bartoszf.procgen.Utils.TextureManager;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class Tile {
 
     public static float TILE_SIZE = 256;
     public Array<Connection<Tile>> connections;
+    public HashMap<Entity, Float> possibleEntities;
     Vector2 position;
     float size;
     TextureAtlas texture;
     TextureRegion textureRegion;
     float height;
     float cost;
+    String tileName;
+    Entity entity;
 
     public Tile() {
     }
@@ -26,6 +34,9 @@ public class Tile {
         this.texture = texture;
         this.setTextureRegion(TextureManager.INSTANCE.getRegion(texture, tileName));
         this.cost = cost;
+        this.tileName = tileName;
+
+        setupPossibleEntities();
     }
 
     public Tile(TextureAtlas texture, String tileName, Vector2 position, float cost, float height) {
@@ -35,6 +46,21 @@ public class Tile {
         this.size = TILE_SIZE;
         this.cost = cost;
         this.height = height;
+        this.tileName = tileName;
+
+        setupPossibleEntities();
+        prepareEntity();
+    }
+
+    public void prepareEntity() {
+        float rand = GeneratorUtils.random.nextFloat();
+        Iterator it = getPossibleEntities().entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry) it.next();
+            if (rand <= (Float) pair.getValue()) {
+                this.entity = ((Entity) pair.getKey()).clone();
+            }
+        }
     }
 
     public void draw(SpriteBatch sb) {
@@ -42,6 +68,13 @@ public class Tile {
         float brightness = 0.9f + (height / 10f);
         sb.setColor(brightness, brightness, brightness, 1.0f);
         sb.draw(getTextureRegion(), position.x, position.y, Tile.TILE_SIZE + 2, Tile.TILE_SIZE + 2);
+    }
+
+    public void drawEntity(SpriteBatch sb) {
+        if (this.entity != null) {
+            sb.setColor(1.0f, 1.0f, 1.0f, 1.0f);
+            entity.draw(sb, this);
+        }
     }
 
     public Vector2 getPosition() {
@@ -95,5 +128,28 @@ public class Tile {
 
     public Tile clone() {
         return new Tile();
+    }
+
+    public void setupPossibleEntities() {
+        possibleEntities = new HashMap<>();
+    }
+
+    public HashMap<Entity, Float> getPossibleEntities() {
+        return possibleEntities;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Tile)) return false;
+
+        Tile tile = (Tile) o;
+
+        return tileName.equals(tile.tileName);
+    }
+
+    @Override
+    public int hashCode() {
+        return tileName.hashCode();
     }
 }

@@ -37,6 +37,7 @@ public class Game extends ApplicationAdapter {
 		chain.analyzeFile("dictionaries/cities.txt");
 
 		TextureManager.INSTANCE.setTexture("tiles", "img/Tiles.pack");
+		TextureManager.INSTANCE.setTexture("entities", "img/Entities.pack");
 
 		gameMap = new GameMap();
 

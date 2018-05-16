@@ -10,79 +10,86 @@ dry_land
   orig: 32, 32
   offset: 0, 0
   index: -1
-grass
+fields
   rotate: false
   xy: 35, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-house_floor
+grass
   rotate: false
   xy: 69, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-house_wall
+house_floor
   rotate: false
   xy: 103, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-ice
+house_wall
   rotate: false
   xy: 137, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-jungle
+ice
   rotate: false
   xy: 171, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-path
+jungle
   rotate: false
   xy: 205, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-sand
+path
   rotate: false
   xy: 239, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-snow
+sand
   rotate: false
   xy: 273, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-snowy_mountain
+snow
   rotate: false
   xy: 307, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-stone
+snowy_mountain
   rotate: false
   xy: 341, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-water
+stone
   rotate: false
   xy: 375, 1
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+water
+  rotate: false
+  xy: 409, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0

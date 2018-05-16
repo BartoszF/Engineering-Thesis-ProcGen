@@ -379,7 +379,7 @@ public class FastNoise {
         m_cellularDistanceFunction = cellularDistanceFunction;
     }
 
-    // Sets distance function used in cellular noise calculations
+    // Sets radius function used in cellular noise calculations
     // Default: Euclidean
     public void SetCellularReturnType(CellularReturnType cellularReturnType) {
         m_cellularReturnType = cellularReturnType;
@@ -391,7 +391,7 @@ public class FastNoise {
         m_cellularNoiseLookup = noise;
     }
 
-    // Sets the maximum perturb distance from original location when using GradientPerturb{Fractal}(...)
+    // Sets the maximum perturb radius from original location when using GradientPerturb{Fractal}(...)
     // Default: 1.0
     public void SetGradientPerturbAmp(float gradientPerturbAmp) {
         m_gradientPerturbAmp = gradientPerturbAmp / (float) 0.45;

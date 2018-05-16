@@ -6,10 +6,12 @@ import pl.bartoszf.procgen.Map.Tile;
 public class TileDefinition implements Comparable<TileDefinition> {
     public Vector3 position;
     public Tile tile;
+    public float radius;
 
-    public TileDefinition(Vector3 pos, Tile tile) {
+    public TileDefinition(Vector3 pos, Tile tile, float radius) {
         this.position = pos;
         this.tile = tile;
+        this.radius = radius;
     }
 
     @Override

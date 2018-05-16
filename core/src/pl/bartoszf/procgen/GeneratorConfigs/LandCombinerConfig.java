@@ -13,55 +13,56 @@ import java.util.PriorityQueue;
 public class LandCombinerConfig {
 
     public static PriorityQueue<TileDefinition> tileDefinitions = new PriorityQueue<>();
-    public static float MULTIPLE_DISTANCE = 0.32f;
 
     public static void initDefinitions() {
         //Vector as follows : Height, Temp, Moisture
         //tileDefinitions.add(new TileDefinition(new Vector3(0.1f, 0, 0), new Water()));
         //Shores
         //Cold Shores
-        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.1f, 0.1f), new Rock()));
-        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.1f, 0.5f), new Ice()));
-        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.1f, 0.75f), new Snow()));
-        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.2f, 0.1f), new Rock()));
-        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.2f, 0.5f), new Ice()));
-        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.2f, 0.75f), new Snow()));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.1f, 0.1f), new Rock(), 0.32f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.1f, 0.5f), new Ice(), 0.32f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.1f, 0.75f), new Snow(), 0.32f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.2f, 0.1f), new Rock(), 0.32f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.2f, 0.5f), new Ice(), 0.32f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.2f, 0.75f), new Snow(), 0.32f));
         //Warm Shores
-        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.5f, 0.25f), new Sand()));
-        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.5f, 0.5f), new Sand()));
-        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.5f, 0.75f), new Grass()));
-        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.75f, 0.25f), new Sand()));
-        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.75f, 0.5f), new Sand()));
-        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.75f, 0.75f), new Sand()));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.5f, 0.25f), new Sand(), 0.32f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.5f, 0.5f), new Sand(), 0.32f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.5f, 0.75f), new Grass(), 0.32f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.75f, 0.25f), new Sand(), 0.32f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.75f, 0.5f), new Sand(), 0.32f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.75f, 0.75f), new Sand(), 0.32f));
 
         //Normal land
         //Cold
-        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.15f, 0.15f), new Ice()));
-        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.15f, 0.6f), new Snow()));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.15f, 0.15f), new Ice(), 0.32f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.15f, 0.6f), new Snow(), 0.32f));
         //Normal temp
-        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.5f, 0.2f), new DryGrass()));
-        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.5f, 0.5f), new Grass()));
-        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.5f, 0.85f), new Jungle()));
-        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.7f, 0.2f), new Sand()));
-        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.7f, 0.5f), new DryGrass()));
-        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.7f, 0.85f), new Jungle()));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.5f, 0.1f), new DryGrass(), 0.32f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.5f, 0.5f), new Grass(), 0.32f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.5f, 0.6f), new Fields(), 0f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.5f, 0.85f), new Jungle(), 0.32f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.6f, 0.6f), new Fields(), 0.15f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.7f, 0.2f), new Sand(), 0.32f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.7f, 0.3f), new DryGrass(), 0.32f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.7f, 0.6f), new Jungle(), 0.32f));
         //Hot
-        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.9f, 0.2f), new Sand()));
-        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.9f, 0.475f), new DryGrass()));
-        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.9f, 0.75f), new Jungle()));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.9f, 0.2f), new Sand(), 0.32f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.9f, 0.475f), new DryGrass(), 0.32f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.9f, 0.75f), new Jungle(), 0.32f));
 
         //Mountains
         //Cold
-        tileDefinitions.add(new TileDefinition(new Vector3(0.8f, 0.15f, 0.0f), new Mountain()));
-        tileDefinitions.add(new TileDefinition(new Vector3(0.8f, 0.15f, 0.5f), new Snowy_Mountain()));
-        tileDefinitions.add(new TileDefinition(new Vector3(0.8f, 0.15f, 1.0f), new Snowy_Mountain()));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.8f, 0.15f, 0.0f), new Mountain(), 0.32f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.8f, 0.15f, 0.5f), new Snowy_Mountain(), 0.32f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.8f, 0.15f, 1.0f), new Snowy_Mountain(), 0.32f));
         //Otherwise
-        tileDefinitions.add(new TileDefinition(new Vector3(0.8f, 0.4f, 0.0f), new Mountain()));
-        tileDefinitions.add(new TileDefinition(new Vector3(0.8f, 0.4f, 0.5f), new Mountain()));
-        tileDefinitions.add(new TileDefinition(new Vector3(0.8f, 0.4f, 1.0f), new Snowy_Mountain()));
-        tileDefinitions.add(new TileDefinition(new Vector3(0.8f, 0.75f, 0.0f), new Mountain()));
-        tileDefinitions.add(new TileDefinition(new Vector3(0.8f, 0.75f, 0.5f), new Mountain()));
-        tileDefinitions.add(new TileDefinition(new Vector3(0.8f, 0.75f, 1.0f), new Mountain()));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.8f, 0.4f, 0.0f), new Mountain(), 0.32f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.8f, 0.4f, 0.5f), new Mountain(), 0.32f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.8f, 0.4f, 1.0f), new Snowy_Mountain(), 0.32f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.8f, 0.75f, 0.0f), new Mountain(), 0.32f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.8f, 0.75f, 0.5f), new Mountain(), 0.32f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.8f, 0.75f, 1.0f), new Mountain(), 0.32f));
 
     }
 
@@ -88,7 +89,7 @@ public class LandCombinerConfig {
             TileDefinition def = it.next();
             float distance = def.position.dst(pos);
             float d = def.position.dst(firstDef.position);
-            if (distance < min && !def.tile.equals(selected[0].tile) && def.position.dst(firstDef.position) < MULTIPLE_DISTANCE) {
+            if (distance < min && !def.tile.equals(selected[0].tile) && d < def.radius && d < firstDef.radius) {
                 min = distance;
                 selected[1] = new TileResult(distance, def.tile);
             }
@@ -109,13 +110,12 @@ public class LandCombinerConfig {
 
         TileResult[] selected = getNearest(new Vector3(tile.getHeight(), tile.getTemp(), tile.getMoisture()));
 
-        if (selected[1] != null)
-            return new MultipleTile(selected[0].tile.clone(), selected[1].tile.clone(), pos, tile.getHeight(), selected[0].distance, selected[1].distance);
-        else {
+        if (selected[1] == null || (selected[1] != null && selected[0].equals(selected[1]))) {
             Tile stile = selected[0].tile.clone();
             stile.setPosition(pos);
             stile.setHeight(tile.getHeight());
             return stile;
-        }
+        } else
+            return new MultipleTile(selected[0].tile.clone(), selected[1].tile.clone(), pos, tile.getHeight(), selected[0].distance, selected[1].distance);
     }
 }
