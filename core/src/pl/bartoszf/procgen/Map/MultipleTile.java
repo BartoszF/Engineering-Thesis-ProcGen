@@ -24,7 +24,7 @@ public class MultipleTile extends Tile {
     @Override
     public void draw(SpriteBatch sb) {
         float height = getHeight();
-        float brightness = 0.83f + height / 6f;
+        float brightness = 0.9f + (height / 10f);
         sb.setColor(brightness, brightness, brightness, this.aFactor);
         sb.draw(tileA.getTextureRegion(), position.x, position.y, Tile.TILE_SIZE + 2, Tile.TILE_SIZE + 2);
         sb.setColor(brightness, brightness, brightness, this.bFactor);

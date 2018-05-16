@@ -39,7 +39,7 @@ public class Tile {
 
     public void draw(SpriteBatch sb) {
         float height = getHeight();
-        float brightness = 0.83f + height / 6f;
+        float brightness = 0.9f + (height / 10f);
         sb.setColor(brightness, brightness, brightness, 1.0f);
         sb.draw(getTextureRegion(), position.x, position.y, Tile.TILE_SIZE + 2, Tile.TILE_SIZE + 2);
     }

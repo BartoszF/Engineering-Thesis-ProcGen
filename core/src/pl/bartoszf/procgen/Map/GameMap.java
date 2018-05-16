@@ -18,16 +18,19 @@ public class GameMap implements IndexedGraph<Tile> {
     Tile[][] tiles;//Map<Vector2, Tile> tiles;
     List<City> cities;
     int size;
+    SpriteBatch cityBatch;
 
     public GameMap() {
         this.size = Game.GAME_SIZE;
         cities = new ArrayList<>();
+        cityBatch = new SpriteBatch();
         //prepareMap();
     }
 
     public GameMap(int size) {
         this.size = size;
         cities = new ArrayList<>();
+        cityBatch = new SpriteBatch();
         //prepareMap();
     }
 
@@ -36,6 +39,7 @@ public class GameMap implements IndexedGraph<Tile> {
     }
 
     public void render(SpriteBatch sb, OrthographicCamera cam) {
+
         int points[] = new int[4];
         points[2] = (int) Math.floor(cam.frustum.planePoints[0].x / Tile.TILE_SIZE);
         points[3] = (int) Math.ceil(cam.frustum.planePoints[1].x / Tile.TILE_SIZE);
@@ -48,10 +52,20 @@ public class GameMap implements IndexedGraph<Tile> {
                 if (y < 0 || y > size - 1) continue;
 
                 Tile tile = tiles[(int) y][(int) x];
-                if (tile == null /*|| tile.getTextureRegion() == null*/) continue;
+                if (tile == null) continue;
                 tile.draw(sb);
             }
         }
+
+        cityBatch.setProjectionMatrix(cam.combined);
+        cityBatch.begin();
+        Game.font.setColor(1.0f, 1.0f, 1.0f, 1.0f);
+        Game.font.getData().setScale(40);
+
+        for (City c : cities) {
+            Game.font.draw(cityBatch, c.getName(), c.center.x * Tile.TILE_SIZE, c.center.y * Tile.TILE_SIZE);
+        }
+        cityBatch.end();
     }
 
     public Tile getTileAt(int x, int y) {

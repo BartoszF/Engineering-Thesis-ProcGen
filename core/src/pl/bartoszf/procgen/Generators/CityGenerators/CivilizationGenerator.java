@@ -3,6 +3,7 @@ package pl.bartoszf.procgen.Generators.CityGenerators;
 import com.badlogic.gdx.math.Rectangle;
 import pl.bartoszf.procgen.Combiners.CityCombiner;
 import pl.bartoszf.procgen.Game;
+import pl.bartoszf.procgen.Generators.NameGenerators.MarkovChain.MarkovChain;
 import pl.bartoszf.procgen.Map.City;
 import pl.bartoszf.procgen.Map.GameMap;
 import pl.bartoszf.procgen.Map.MultipleTile;
@@ -19,9 +20,11 @@ public class CivilizationGenerator {
 
     int sitesNum = 5;
     GameMap gameMap;
+    MarkovChain chain;
 
-    public CivilizationGenerator(GameMap gameMap) {
+    public CivilizationGenerator(GameMap gameMap, MarkovChain markov) {
         this.gameMap = gameMap;
+        this.chain = markov;
     }
 
     public void generate() {
@@ -41,7 +44,7 @@ public class CivilizationGenerator {
             CityResult result = city.generate(3 + (int) Math.ceil(size / 120.0f));
 
             tempCityCombiner.combine(result.tiles);
-            gameMap.addCity(new City(result.center));
+            gameMap.addCity(new City(result.center, chain.getRandom()));
         }
     }
 

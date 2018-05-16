@@ -21,13 +21,13 @@ import pl.bartoszf.procgen.Utils.TextureManager;
 public class Game extends ApplicationAdapter {
 	public static int GAME_SIZE = 1024;
 	public static PathFindingManager pathManager;
+	public static BitmapFont font;
 	SpriteBatch batch;
 	private OrthographicCamera cam;
 	private GameMap gameMap;
 	private MapController controller;
 	private float camSize = 1024 * 32 * 1.2f;
 	private FrameRate fps;
-	private BitmapFont font;
 	
 	@Override
 	public void create () {
@@ -35,8 +35,6 @@ public class Game extends ApplicationAdapter {
 
 		MarkovChain chain = new MarkovChain();
 		chain.analyzeFile("dictionaries/cities.txt");
-		for (int i = 0; i < 10; i++)
-			System.out.println(chain.getRandom());
 
 		TextureManager.INSTANCE.setTexture("tiles", "img/Tiles.pack");
 
@@ -68,7 +66,7 @@ public class Game extends ApplicationAdapter {
 		pathManager = new PathFindingManager(gameMap);
 
 		System.out.println("Generating civs");
-		CivilizationGenerator civGenerator = new CivilizationGenerator(gameMap);
+		CivilizationGenerator civGenerator = new CivilizationGenerator(gameMap, chain);
 		civGenerator.generate();
 
 		/*gameMap.populateConnections();

@@ -6,9 +6,9 @@ public class City {
     Vector2 center;
     String name;
 
-    public City(Vector2 center) {
+    public City(Vector2 center, String name) {
         this.center = center;
-        //TODO: Generate name
+        this.name = name;
     }
 
     public Vector2 getCenter() {
