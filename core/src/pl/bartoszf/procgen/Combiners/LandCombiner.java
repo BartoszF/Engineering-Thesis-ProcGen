@@ -32,5 +32,10 @@ public class LandCombiner {
         return land;
     }
 
+    public void dispose() {
+        tiles.clear();
+        tiles = null;
+    }
+
 
 }

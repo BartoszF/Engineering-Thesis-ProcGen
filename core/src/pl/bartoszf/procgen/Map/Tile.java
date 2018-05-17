@@ -27,6 +27,9 @@ public class Tile {
     String tileName;
     Entity entity;
 
+    float temp;
+    float moisture;
+
     public Tile() {
     }
 
@@ -36,7 +39,8 @@ public class Tile {
         this.cost = cost;
         this.tileName = tileName;
 
-        setupPossibleEntities();
+        this.possibleEntities = setupPossibleEntities();
+        prepareEntity();
     }
 
     public Tile(TextureAtlas texture, String tileName, Vector2 position, float cost, float height) {
@@ -48,7 +52,7 @@ public class Tile {
         this.height = height;
         this.tileName = tileName;
 
-        setupPossibleEntities();
+        this.possibleEntities = setupPossibleEntities();
         prepareEntity();
     }
 
@@ -72,7 +76,6 @@ public class Tile {
 
     public void drawEntity(SpriteBatch sb) {
         if (this.entity != null) {
-            sb.setColor(1.0f, 1.0f, 1.0f, 1.0f);
             entity.draw(sb, this);
         }
     }
@@ -106,8 +109,8 @@ public class Tile {
     }
 
     public void setTextureRegion(TextureRegion textureRegion) {
-        TextureRegion temp = new TextureRegion(textureRegion);
-        this.textureRegion = TextureManager.fixBleeding(temp);
+        //TextureRegion temp = new TextureRegion(textureRegion);
+        this.textureRegion = textureRegion;//TextureManager.fixBleeding(temp);
     }
 
     public float getHeight() {
@@ -130,12 +133,28 @@ public class Tile {
         return new Tile();
     }
 
-    public void setupPossibleEntities() {
-        possibleEntities = new HashMap<>();
+    public HashMap<Entity, Float> setupPossibleEntities() {
+        return new HashMap<>();
     }
 
     public HashMap<Entity, Float> getPossibleEntities() {
         return possibleEntities;
+    }
+
+    public float getTemp() {
+        return temp;
+    }
+
+    public void setTemp(float temp) {
+        this.temp = temp;
+    }
+
+    public float getMoisture() {
+        return moisture;
+    }
+
+    public void setMoisture(float moisture) {
+        this.moisture = moisture;
     }
 
     @Override

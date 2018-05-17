@@ -4,6 +4,7 @@ import com.badlogic.gdx.ai.pfa.Connection;
 import com.badlogic.gdx.ai.pfa.indexed.IndexedGraph;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import pl.bartoszf.procgen.Game;
@@ -15,68 +16,69 @@ import java.util.List;
 
 public class GameMap implements IndexedGraph<Tile> {
     public static TileDistance distance = new TileDistance();
-    Tile[][] tiles;//Map<Vector2, Tile> tiles;
+    Tile[][] tiles;
     List<City> cities;
     int size;
     SpriteBatch cityBatch;
+    Rectangle camRect;
+    Tile tempTile;
 
     public GameMap() {
         this.size = Game.GAME_SIZE;
         cities = new ArrayList<>();
         cityBatch = new SpriteBatch();
-        //prepareMap();
+        camRect = new Rectangle();
     }
 
     public GameMap(int size) {
         this.size = size;
         cities = new ArrayList<>();
         cityBatch = new SpriteBatch();
-        //prepareMap();
-    }
-
-    public void prepareMap() {
-        tiles = new Tile[size][size];
+        camRect = new Rectangle();
     }
 
     public void render(SpriteBatch sb, OrthographicCamera cam) {
+        camRect.x = (cam.position.x - cam.viewportWidth / 2 * cam.zoom) / Tile.TILE_SIZE;
+        camRect.y = (cam.position.y - cam.viewportHeight / 2 * cam.zoom) / Tile.TILE_SIZE;
+        camRect.width = ((cam.viewportWidth + 5) * cam.zoom) / Tile.TILE_SIZE;
+        camRect.height = ((cam.viewportHeight + 5) * cam.zoom) / Tile.TILE_SIZE;
 
-        int points[] = new int[4];
-        points[2] = (int) Math.floor(cam.frustum.planePoints[0].x / Tile.TILE_SIZE);
-        points[3] = (int) Math.ceil(cam.frustum.planePoints[1].x / Tile.TILE_SIZE);
-        points[0] = (int) Math.floor(cam.frustum.planePoints[0].y / Tile.TILE_SIZE);
-        points[1] = (int) Math.ceil(cam.frustum.planePoints[2].y / Tile.TILE_SIZE);
+        int cx = (int) camRect.x;
+        int cy = (int) camRect.y;
+        int cw = (int) (camRect.x + camRect.width);
+        int ch = (int) (camRect.y + camRect.height + 1);
 
-        for (float y = points[1]; y >= points[0]; y -= 1.0f) {
-            for (float x = points[2]; x <= points[3]; x += 1.0f) {
-                if (x < 0 || x > size - 1) continue;
-                if (y < 0 || y > size - 1) continue;
+        for (int y = ch; y >= cy; y--) {
+            for (int x = cx; x <= cw; x++) {
+                if (x < 0 || x > size - 1)
+                    continue;
+                if (y < 0 || y > size - 1)
+                    continue;
 
-                Tile tile = tiles[(int) y][(int) x];
-                if (tile == null) continue;
-                tile.draw(sb);
+                tempTile = tiles[y][x];
+                if (tempTile == null) continue;
+                tempTile.draw(sb);
             }
         }
 
-        for (float y = points[1]; y >= points[0]; y -= 1.0f) {
-            for (float x = points[2]; x <= points[3]; x += 1.0f) {
-                if (x < 0 || x > size - 1) continue;
-                if (y < 0 || y > size - 1) continue;
+        sb.flush();
+        sb.setColor(1.0f, 1.0f, 1.0f, 1.0f);
 
-                Tile tile = tiles[(int) y][(int) x];
-                if (tile == null) continue;
-                tile.drawEntity(sb);
+        for (int y = ch; y >= cy - 1; y--) {
+            for (int x = cx; x <= cw; x++) {
+                if (x < 0 || x > size - 1)
+                    continue;
+                if (y < 0 || y > size - 1)
+                    continue;
+
+                tempTile = tiles[y][x];
+                if (tempTile == null) continue;
+                tempTile.drawEntity(sb);
             }
+            if (y >= 0 && y < size && cx >= 0 && cx < size)
+                Game.font.draw(sb, ".", tiles[y][cx].getPosition().x, tiles[y][cx].getPosition().y); //Dirty and slow hack to fix bug in spritebatch
         }
 
-        cityBatch.setProjectionMatrix(cam.combined);
-        cityBatch.begin();
-        Game.font.setColor(1.0f, 1.0f, 1.0f, 1.0f);
-        Game.font.getData().setScale(40);
-
-        for (City c : cities) {
-            Game.font.draw(cityBatch, c.getName(), c.center.x * Tile.TILE_SIZE, c.center.y * Tile.TILE_SIZE);
-        }
-        cityBatch.end();
     }
 
     public Tile getTileAt(int x, int y) {

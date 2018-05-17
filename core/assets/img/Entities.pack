@@ -3,16 +3,30 @@ Entities.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
+jungle_tree
+  rotate: false
+  xy: 1, 35
+  size: 64, 76
+  orig: 64, 76
+  offset: 0, 0
+  index: -1
+snowman
+  rotate: false
+  xy: 67, 47
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
 wheat
   rotate: false
-  xy: 1, 19
+  xy: 1, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 bush
   rotate: false
-  xy: 1, 1
+  xy: 133, 95
   size: 16, 16
   orig: 16, 16
   offset: 0, 0

@@ -39,13 +39,13 @@ public class LandCombinerConfig {
         tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.15f, 0.6f), new Snow(), 0.32f));
         //Normal temp
         tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.5f, 0.1f), new DryGrass(), 0.32f));
-        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.5f, 0.5f), new Grass(), 0.32f));
-        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.5f, 0.6f), new Fields(), 0f));
-        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.5f, 0.85f), new Jungle(), 0.32f));
-        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.6f, 0.6f), new Fields(), 0.15f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.5f, 0.3f), new Grass(), 0.32f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.5f, 0.5f), new Fields(), 0.2f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.5f, 0.9f), new Jungle(), 0.32f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.6f, 0.6f), new Fields(), 0.23f));
         tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.7f, 0.2f), new Sand(), 0.32f));
         tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.7f, 0.3f), new DryGrass(), 0.32f));
-        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.7f, 0.6f), new Jungle(), 0.32f));
+        tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.7f, 0.75f), new Jungle(), 0.32f));
         //Hot
         tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.9f, 0.2f), new Sand(), 0.32f));
         tileDefinitions.add(new TileDefinition(new Vector3(0.4f, 0.9f, 0.475f), new DryGrass(), 0.32f));
@@ -114,8 +114,14 @@ public class LandCombinerConfig {
             Tile stile = selected[0].tile.clone();
             stile.setPosition(pos);
             stile.setHeight(tile.getHeight());
+            stile.setMoisture(tile.getMoisture());
+            stile.setTemp(tile.getTemp());
             return stile;
-        } else
-            return new MultipleTile(selected[0].tile.clone(), selected[1].tile.clone(), pos, tile.getHeight(), selected[0].distance, selected[1].distance);
+        } else {
+            Tile stile = new MultipleTile(selected[0].tile.clone(), selected[1].tile.clone(), pos, tile.getHeight(), selected[0].distance, selected[1].distance);
+            stile.setMoisture(tile.getMoisture());
+            stile.setTemp(tile.getTemp());
+            return stile;
+        }
     }
 }

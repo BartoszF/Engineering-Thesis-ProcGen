@@ -65,11 +65,6 @@ public class MultipleTile extends Tile {
         sb.draw(tileA.getTextureRegion(), position.x, position.y, Tile.TILE_SIZE + 2, Tile.TILE_SIZE + 2);
         sb.setColor(brightness, brightness, brightness, this.bFactor);
         sb.draw(tileB.getTextureRegion(), position.x, position.y, Tile.TILE_SIZE + 2, Tile.TILE_SIZE + 2);
-
-        if (this.entity != null) {
-            sb.setColor(1.0f, 1.0f, 1.0f, 1.0f);
-            entity.draw(sb, this);
-        }
     }
 
     public Tile getTileA() {

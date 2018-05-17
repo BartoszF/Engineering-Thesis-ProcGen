@@ -20,8 +20,8 @@ public class Grass extends Tile {
 
 
     @Override
-    public void setupPossibleEntities() {
-        possibleEntities = new HashMap<Entity, Float>() {{
+    public HashMap<Entity, Float> setupPossibleEntities() {
+        return new HashMap<Entity, Float>() {{
             put(new Bush(), 0.4f);
         }};
     }

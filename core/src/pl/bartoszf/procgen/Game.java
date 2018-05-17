@@ -12,6 +12,7 @@ import pl.bartoszf.procgen.GeneratorConfigs.LandCombinerConfig;
 import pl.bartoszf.procgen.Generators.CityGenerators.CivilizationGenerator;
 import pl.bartoszf.procgen.Generators.IslandGenerators.IslandGenerator;
 import pl.bartoszf.procgen.Generators.NameGenerators.MarkovChain.MarkovChain;
+import pl.bartoszf.procgen.Map.City;
 import pl.bartoszf.procgen.Map.GameMap;
 import pl.bartoszf.procgen.Map.Tile;
 import pl.bartoszf.procgen.Pathfinding.PathFindingManager;
@@ -70,6 +71,9 @@ public class Game extends ApplicationAdapter {
 		CivilizationGenerator civGenerator = new CivilizationGenerator(gameMap, chain);
 		civGenerator.generate();
 
+		generator.dispose();
+		combiner.dispose();
+
 		/*gameMap.populateConnections();
 
 		PathGenerator pathGen = new PathGenerator(gameMap);
@@ -83,12 +87,24 @@ public class Game extends ApplicationAdapter {
 		cam.update();
 		fps.update();
 		batch.setProjectionMatrix(cam.combined);
+		Game.font.getData().setScale(1);
 
 		Gdx.gl.glClearColor(0, 0, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
 		gameMap.render(batch, cam);
 		fps.render(cam, gameMap);
+		batch.end();
+
+		batch.begin();
+		Game.font.setColor(1.0f, 1.0f, 1.0f, 1.0f);
+		Game.font.getData().setScale(40);
+
+		for (City c : gameMap.getCities()) {
+			Game.font.draw(batch, c.getName(), c.getCenter().x * Tile.TILE_SIZE, c.getCenter().y * Tile.TILE_SIZE);
+		}
+
+
 		batch.end();
 	}
 	

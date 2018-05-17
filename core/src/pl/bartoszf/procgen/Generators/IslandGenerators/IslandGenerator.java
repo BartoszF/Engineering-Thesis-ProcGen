@@ -50,4 +50,9 @@ public class IslandGenerator {
 
         return tiles;
     }
+
+    public void dispose() {
+        tiles.clear();
+        tiles = null;
+    }
 }

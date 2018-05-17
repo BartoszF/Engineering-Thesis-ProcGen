@@ -19,7 +19,14 @@ public class Entity {
     }
 
     public void draw(SpriteBatch sb, Tile tile) {
+        if (!drawable(tile)) return;
         sb.draw(getTextureRegion(), tile.getPosition().x + 4, tile.getPosition().y + 4, Tile.TILE_SIZE - 8, Tile.TILE_SIZE - 8);
+        //if(GeneratorUtils.random.nextFloat() < 0.1f)
+        //    Game.font.draw(sb,".",tile.getPosition().x,tile.getPosition().y); //Dirty and slow hack to fix bug in spritebatch
+    }
+
+    public boolean drawable(Tile tile) {
+        return true;
     }
 
     public TextureAtlas getTexture() {
@@ -35,8 +42,8 @@ public class Entity {
     }
 
     public void setTextureRegion(TextureRegion textureRegion) {
-        TextureRegion temp = new TextureRegion(textureRegion);
-        this.textureRegion = TextureManager.fixBleeding(temp);
+        //TextureRegion temp = new TextureRegion(textureRegion);
+        this.textureRegion = textureRegion;//TextureManager.fixBleeding(temp);
     }
 
     public Entity clone() {
