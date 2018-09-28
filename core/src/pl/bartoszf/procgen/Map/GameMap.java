@@ -78,7 +78,6 @@ public class GameMap implements IndexedGraph<Tile> {
             if (y >= 0 && y < size && cx >= 0 && cx < size)
                 Game.font.draw(sb, ".", tiles[y][cx].getPosition().x, tiles[y][cx].getPosition().y); //Dirty and slow hack to fix bug in spritebatch
         }
-
     }
 
     public Tile getTileAt(int x, int y) {
@@ -130,24 +129,12 @@ public class GameMap implements IndexedGraph<Tile> {
                 t.connections = new Array<>();
                 if (x > 0) {
                     t.connections.add(new TileConnection(t, tiles[y][x - 1]));
-                    /*if (y < size - 1) {
-                        t.connections.add(new TileConnection(t, tiles[y + 1][x - 1]));
-                    }
-                    if (y > 0) {
-                        t.connections.add(new TileConnection(t, tiles[y - 1][x - 1]));
-                    }*/
                 }
                 if (y < size - 1) {
                     t.connections.add(new TileConnection(t, tiles[y + 1][x]));
                 }
                 if (x < size - 1) {
                     t.connections.add(new TileConnection(t, tiles[y][x + 1]));
-                    /*if (y < size - 1) {
-                        t.connections.add(new TileConnection(t, tiles[y + 1][x + 1]));
-                    }
-                    if (y > 0) {
-                        t.connections.add(new TileConnection(t, tiles[y - 1][x + 1]));
-                    }*/
                 }
                 if (y > 0) {
                     t.connections.add(new TileConnection(t, tiles[y - 1][x]));

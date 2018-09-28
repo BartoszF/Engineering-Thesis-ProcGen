@@ -10,8 +10,6 @@ public class NoiseGenerator {
         this.size = size;
     }
 
-    ;
-
     public FastNoise getFastNoise() {
         return fastNoise;
     }

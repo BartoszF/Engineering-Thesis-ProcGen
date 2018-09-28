@@ -16,7 +16,6 @@ public class LandCombinerConfig {
 
     public static void initDefinitions() {
         //Vector as follows : Height, Temp, Moisture
-        //tileDefinitions.add(new TileDefinition(new Vector3(0.1f, 0, 0), new Water()));
         //Shores
         //Cold Shores
         tileDefinitions.add(new TileDefinition(new Vector3(0.15f, 0.1f, 0.1f), new Rock(), 0.32f));

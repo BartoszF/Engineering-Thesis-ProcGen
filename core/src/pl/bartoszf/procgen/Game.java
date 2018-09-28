@@ -12,6 +12,7 @@ import pl.bartoszf.procgen.GeneratorConfigs.LandCombinerConfig;
 import pl.bartoszf.procgen.Generators.CityGenerators.CivilizationGenerator;
 import pl.bartoszf.procgen.Generators.IslandGenerators.IslandGenerator;
 import pl.bartoszf.procgen.Generators.NameGenerators.MarkovChain.MarkovChain;
+import pl.bartoszf.procgen.Generators.PathGenerators.PathGenerator;
 import pl.bartoszf.procgen.Map.City;
 import pl.bartoszf.procgen.Map.GameMap;
 import pl.bartoszf.procgen.Map.Tile;
@@ -74,11 +75,15 @@ public class Game extends ApplicationAdapter {
 		generator.dispose();
 		combiner.dispose();
 
-		/*gameMap.populateConnections();
+        gameMap.populateConnections();
 
 		PathGenerator pathGen = new PathGenerator(gameMap);
-		pathGen.generate();*/
-	}
+        pathGen.generate();
+
+        for (int i = 0; i < 20; i++) {
+            System.out.println(chain.getRandom());
+        }
+    }
 
 	@Override
 	public void render () {

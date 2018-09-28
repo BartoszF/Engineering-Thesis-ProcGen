@@ -3,6 +3,13 @@ Tiles.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
+house_wall
+  rotate: false
+  xy: 1, 35
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
 dry_land
   rotate: false
   xy: 1, 1
@@ -12,84 +19,77 @@ dry_land
   index: -1
 fields
   rotate: false
-  xy: 35, 1
+  xy: 35, 67
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 grass
   rotate: false
-  xy: 69, 1
+  xy: 35, 33
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 house_floor
   rotate: false
-  xy: 103, 1
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-house_wall
-  rotate: false
-  xy: 137, 1
+  xy: 69, 67
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 ice
   rotate: false
-  xy: 171, 1
+  xy: 69, 33
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 jungle
   rotate: false
-  xy: 205, 1
+  xy: 103, 67
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 path
   rotate: false
-  xy: 239, 1
+  xy: 103, 33
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 sand
   rotate: false
-  xy: 273, 1
+  xy: 137, 67
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 snow
   rotate: false
-  xy: 307, 1
+  xy: 137, 33
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 snowy_mountain
   rotate: false
-  xy: 341, 1
+  xy: 171, 67
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 stone
   rotate: false
-  xy: 375, 1
+  xy: 171, 33
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 water
   rotate: false
-  xy: 409, 1
+  xy: 205, 67
   size: 32, 32
   orig: 32, 32
   offset: 0, 0

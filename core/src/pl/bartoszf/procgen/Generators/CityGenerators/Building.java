@@ -10,11 +10,11 @@ public class Building {
     public Building(LandPlot plot) {
         rect = new Rectangle();
 
-        rect.setX(plot.getX() + GeneratorUtils.random.nextInt((int) Math.ceil((int) (plot.getW() / 4.0f))));
-        rect.setY(plot.getY() + GeneratorUtils.random.nextInt((int) Math.ceil((int) (plot.getH() / 4.0f))));
+        rect.setX(plot.getX() + 1 + GeneratorUtils.random.nextInt((int) Math.ceil((int) (plot.getW() / 4.0f))));
+        rect.setY(plot.getY() + 1 + GeneratorUtils.random.nextInt((int) Math.ceil((int) (plot.getH() / 4.0f))));
 
-        float w = plot.getW() - (rect.getX() - plot.getX());
-        float h = plot.getH() - (rect.getY() - plot.getY());
+        float w = plot.getW() - (rect.getX() - plot.getX()) - 1;
+        float h = plot.getH() - (rect.getY() - plot.getY()) - 1;
 
         w -= GeneratorUtils.random.nextFloat() * (w / 4.0f);
         h -= GeneratorUtils.random.nextFloat() * (h / 4.0f);

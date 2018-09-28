@@ -13,7 +13,7 @@ public class TileConnection implements Connection<Tile> {
 
     @Override
     public float getCost() {
-        return (from.getCost() + to.getCost()) / 2;
+        return from.getCost();
     }
 
     @Override

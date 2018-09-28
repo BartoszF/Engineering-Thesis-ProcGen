@@ -8,10 +8,7 @@ import pl.bartoszf.procgen.Map.City;
 import pl.bartoszf.procgen.Map.GameMap;
 import pl.bartoszf.procgen.Map.MultipleTile;
 import pl.bartoszf.procgen.Map.Tile;
-import pl.bartoszf.procgen.Map.Tiles.HouseFloor;
-import pl.bartoszf.procgen.Map.Tiles.HouseWall;
-import pl.bartoszf.procgen.Map.Tiles.Mountain;
-import pl.bartoszf.procgen.Map.Tiles.Water;
+import pl.bartoszf.procgen.Map.Tiles.*;
 import pl.bartoszf.procgen.Utils.GeneratorUtils;
 
 import java.util.Random;
@@ -44,7 +41,7 @@ public class CivilizationGenerator {
             CityResult result = city.generate(3 + (int) Math.ceil(size / 120.0f));
 
             tempCityCombiner.combine(result.tiles);
-            gameMap.addCity(new City(result.center, chain.getRandom()));
+            gameMap.addCity(new City(result.center, ""/*chain.getRandom()*/));
         }
     }
 
@@ -58,6 +55,7 @@ public class CivilizationGenerator {
                 Tile tile = gameMap.getTileAt(x, y);
                 if (tile == null) return false;
                 if (tile instanceof Mountain) return false;
+                if (tile instanceof Snowy_Mountain) return false;
                 if (tile instanceof HouseFloor) return false;
                 if (tile instanceof HouseWall) return false;
                 if (tile instanceof Water) return false;
@@ -65,12 +63,14 @@ public class CivilizationGenerator {
                     MultipleTile t = (MultipleTile) tile;
                     Tile a = t.getTileA();
                     if (a instanceof Mountain) return false;
+                    if (a instanceof Snowy_Mountain) return false;
                     if (a instanceof HouseFloor) return false;
                     if (a instanceof HouseWall) return false;
                     if (a instanceof Water) return false;
 
                     Tile b = t.getTileB();
                     if (b instanceof Mountain) return false;
+                    if (b instanceof Snowy_Mountain) return false;
                     if (b instanceof HouseFloor) return false;
                     if (b instanceof HouseWall) return false;
                     if (b instanceof Water) return false;

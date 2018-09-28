@@ -15,13 +15,14 @@ public class GeneratorUtils {
         return Math.max(0.0f, 1.15f - gradient);
     }
 
-    public static float getVerticalGradient(int y, int maxY) {
-        return (float) y / (float) maxY;
-    }
-
     public static float getVerticalGradient(int y, int maxY, float random) {
         float rand = GeneratorUtils.random.nextFloat() * random;
         return ((float) y / (float) maxY) + (rand * 2) - rand;
+    }
+
+
+    public static float getVerticalGradient(int y, int maxY) {
+        return (float) y / (float) maxY;
     }
 
     public static float getDistance(int x, int y, int cx, int cy) {
